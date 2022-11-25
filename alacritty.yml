@@ -82,4 +82,4 @@ key_bindings:
     - { key: V,        mods: Control, action: Paste                }
     - { key: C,        mods: Control, action: Copy                 }
     - { key: Q,        mods: Control, action: Quit                 }
-    - { key: N,        mods: Control, action: SpawnNewInstance     }
+    - { key: N,        mods: Alt, action: SpawnNewInstance     }
