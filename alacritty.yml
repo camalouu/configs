@@ -1,0 +1,85 @@
+window:
+    dimensions:
+      columns: 80
+      lines: 20
+    # Blank space added around the window in pixels
+    padding:
+        x: 0
+        y: 0
+
+    # Spread additional padding evenly around the terminal content
+    dynamic_padding: true
+
+    # Disable border and title bar
+    # decorations: none
+    opacity: 0.9
+
+font:
+  normal:
+    family: Hack Nerd Font
+    style: Regular
+  size: 16
+
+
+# Colors (One Dark); if dim colors are not set, they will be calculated
+# automatically based on the `normal` colors
+colors:
+    primary:
+        background: '#24272e'
+        foreground: '#abb2bf'
+    cursor:
+        text: '#0b0b0b'    # black
+        cursor: '#528bff'
+    vi_mode_cursor:
+        text: '#abb2bf'
+        cursor: '#fc1303'
+    selection:
+        text: '#abb2bf'
+        background: '#3e4452'
+    search:
+        matches:
+            foreground: '#3e4452'
+            background: '#e5c07b'
+        footer_bar:
+            background: '#282c34'
+            foreground: '#abb2bf'
+    normal:
+        black:   '#24272e'
+        red:     '#e06c75'
+        green:   '#98c379'
+        yellow:  '#e5c07b'
+        blue:    '#61afef'
+        magenta: '#c678dd'
+        cyan:    '#56b6c2'
+        white:   '#abb2bf'
+    bright:
+        black:   '#3e4452'
+        red:     '#be5046'
+        green:   '#98c379'
+        yellow:  '#d19a66'
+        blue:    '#61afef'
+        magenta: '#c678dd'
+        cyan:    '#56b6c2'
+        white:   '#5c6370'
+
+mouse:
+    hide_when_typing: true
+
+selection:
+    # When set to `true`, selected text will be copied to the primary
+    # clipboard.
+    save_to_clipboard: true
+
+cursor:
+    # Thickness of the cursor (number from `0.0` to `1.0`)
+    thickness: 0.18
+    # Vi mode cursor style
+    vi_mode_style: Block
+
+
+# Key bindings
+key_bindings:
+    - { key: V,        mods: Control, action: Paste                }
+    - { key: C,        mods: Control, action: Copy                 }
+    - { key: Q,        mods: Control, action: Quit                 }
+    - { key: N,        mods: Control, action: SpawnNewInstance     }
