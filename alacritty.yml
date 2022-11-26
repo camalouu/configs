@@ -79,7 +79,7 @@ cursor:
 
 # Key bindings
 key_bindings:
-    - { key: V,        mods: Control, action: Paste                }
-    - { key: C,        mods: Control, action: Copy                 }
-    - { key: Q,        mods: Control, action: Quit                 }
+    - { key: V,        mods: Alt, action: Paste                }
+    - { key: C,        mods: Alt, action: Copy                 }
+    - { key: Q,        mods: Alt, action: Quit                 }
     - { key: N,        mods: Alt, action: SpawnNewInstance     }
