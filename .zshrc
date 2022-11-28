@@ -6,6 +6,8 @@ export ZSH="$HOME/.oh-my-zsh"
 
 VI_MODE_SET_CURSOR=true
 
+zstyle ':completion:*' completer _complete _ignored _files
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
