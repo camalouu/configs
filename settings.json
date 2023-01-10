@@ -13,6 +13,9 @@
     "vim.normalModeKeyBindings": [
         { "before": [ "g", "l"], "after": ["$"] },
         { "before": [ "g", "h"], "after": ["0"] },
+        { "before": [ "g", "p" ], "commands": ["editor.action.showHover"]},
+        { "before": [ "g", "r" ], "commands": ["editor.action.goToReferences"]},
+        { "before": [ "g", "c" ], "commands": ["editor.action.dirtydiff.next"]},
         { "before": [ "U" ], "after": ["<C-r>"] },
         { "before": [ "<leader>", "q" ], "commands": ["workbench.action.closeActiveEditor"]},
         { "before": [ "<leader>", "/" ], "commands": ["editor.action.commentLine"]},
@@ -22,6 +25,9 @@
         { "before": [ "L" ], "commands": ["workbench.action.nextEditor"] },
         { "before": [ "H" ], "commands": ["workbench.action.previousEditor"]},
     ],
+    "vim.visualModeKeyBindings": [
+        { "before": [ "<leader>", "/" ], "commands": ["editor.action.commentLine"]},
+    ],
     "vim.insertModeKeyBindings": [
         { "before": [ "j", "k" ], "after": [ "<Esc>" ] }
     ],
@@ -30,7 +36,7 @@
         { "before": [ "K" ], "commands": [ "lineBreakInsert" ], "silent": true }
     ],
     "vim.leader": "<space>",
-    "vim.handleKeys": { "<C-b>": false, "<C-f>": false },
+    "vim.handleKeys": { "<C-b>": false, "<C-f>": false, "<C-j>": false },
     "files.autoSave": "afterDelay",
     "explorer.confirmDragAndDrop": false,
     "editor.mouseWheelScrollSensitivity": 0.5,
