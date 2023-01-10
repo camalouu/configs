@@ -8,7 +8,7 @@
     "vim.easymotion": true,
     "vim.incsearch": true,
     "vim.useSystemClipboard": true,
-    "vim.useCtrlKeys": false,
+    "vim.useCtrlKeys": true,
     "vim.hlsearch": true,
     "vim.normalModeKeyBindings": [
         { "before": [ "g", "l"], "after": ["$"] },
@@ -25,13 +25,12 @@
     "vim.insertModeKeyBindings": [
         { "before": [ "j", "k" ], "after": [ "<Esc>" ] }
     ],
-    "vim.normalModeKeyBindingsNonRecursive": [
-        { "before": [ "<leader>", "d" ], "after": [ "d", "d" ] },
+    "vim.normalModeKeyBindingsNonRecursive": [ { "before": [ "<leader>", "d" ], "after": [ "d", "d" ] },
         { "before": [ "<C-n>" ], "commands": [ ":nohl" ] },
         { "before": [ "K" ], "commands": [ "lineBreakInsert" ], "silent": true }
     ],
     "vim.leader": "<space>",
-    "vim.handleKeys": { "<C-a>": false, "<C-f>": false },
+    "vim.handleKeys": { "<C-b>": false, "<C-f>": false },
     "files.autoSave": "afterDelay",
     "explorer.confirmDragAndDrop": false,
     "editor.mouseWheelScrollSensitivity": 0.5,
@@ -39,5 +38,6 @@
     "editor.cursorSmoothCaretAnimation": true,
     "workbench.list.smoothScrolling": true,
     "editor.smoothScrolling": true,
+    "editor.lineNumbers": "relative",
     "workbench.activityBar.visible": false
 }
