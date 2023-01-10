@@ -1,0 +1,42 @@
+{
+    "window.zoomLevel": 2,
+    "editor.fontSize": 16,
+    "workbench.colorTheme": "Noctis",
+    "window.menuBarVisibility": "toggle",
+    "editor.minimap.enabled": false,
+    "editor.fontFamily": "'Hack Nerd font', 'monospace', monospace",
+    "vim.easymotion": true,
+    "vim.incsearch": true,
+    "vim.useSystemClipboard": true,
+    "vim.useCtrlKeys": false,
+    "vim.hlsearch": true,
+    "vim.normalModeKeyBindings": [
+        { "before": [ "g", "l"], "after": ["$"] },
+        { "before": [ "g", "h"], "after": ["0"] },
+        { "before": [ "U" ], "after": ["<C-r>"] },
+        { "before": [ "<leader>", "q" ], "commands": ["workbench.action.closeActiveEditor"]},
+        { "before": [ "<leader>", "f" ], "commands": ["editor.action.formatDocument"]},
+        { "before": [ "<leader>", "e" ], "commands": ["workbench.view.explorer"]},
+        { "before": [ "<leader>", "b" ], "commands": ["workbench.action.toggleActivityBarVisibility"]},
+        { "before": [ "L" ], "commands": ["workbench.action.nextEditor"], },
+        { "before": [ "H" ], "commands": ["workbench.action.previousEditor"]},
+    ],
+    "vim.insertModeKeyBindings": [
+        { "before": [ "j", "k" ], "after": [ "<Esc>" ] }
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        { "before": [ "<leader>", "d" ], "after": [ "d", "d" ] },
+        { "before": [ "<C-n>" ], "commands": [ ":nohl" ] },
+        { "before": [ "K" ], "commands": [ "lineBreakInsert" ], "silent": true }
+    ],
+    "vim.leader": "<space>",
+    "vim.handleKeys": { "<C-a>": false, "<C-f>": false },
+    "files.autoSave": "afterDelay",
+    "explorer.confirmDragAndDrop": false,
+    "editor.mouseWheelScrollSensitivity": 0.5,
+    "workbench.list.mouseWheelScrollSensitivity": 0.5,
+    "editor.cursorSmoothCaretAnimation": true,
+    "workbench.list.smoothScrolling": true,
+    "editor.smoothScrolling": true,
+    "workbench.activityBar.visible": false
+}
