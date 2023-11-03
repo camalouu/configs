@@ -1,49 +1,93 @@
 {
-    "window.zoomLevel": 2,
-    "editor.fontSize": 16,
-    "workbench.colorTheme": "Noctis",
-    "window.menuBarVisibility": "toggle",
+    "window.zoomLevel": 0.5,
+    "window.menuBarVisibility":"compact",
+    "window.commandCenter": false,
+
+    "workbench.startupEditor": "none",
+    "workbench.colorTheme": "Noctis Sereno",
+    "workbench.editor.showTabs": "single",
+    "workbench.layoutControl.enabled": false,
+    "workbench.list.smoothScrolling": true,
+    "workbench.activityBar.location": "hidden",
+    "workbench.panel.opensMaximized": "preserve",
+
+    "editor.fontSize": 15,
     "editor.minimap.enabled": false,
     "editor.fontFamily": "'Hack Nerd font', 'monospace', monospace",
+    "editor.cursorSmoothCaretAnimation": "on",
+    "editor.smoothScrolling": true,
+    "editor.lineNumbers": "relative",
+
+    "security.workspace.trust.enabled": false,
+
+    "files.autoSave": "afterDelay",
+    
+    "terminal.integrated.smoothScrolling": true,
+    "terminal.integrated.fontSize": 16,
+
+    "explorer.confirmDragAndDrop": false,
+    "explorer.confirmDelete": false,
+
+    "git.autofetch": true,
+
+    "vim.leader": "<space>",
     "vim.easymotion": true,
+    "vim.surround": true,
     "vim.incsearch": true,
     "vim.useSystemClipboard": true,
-    "vim.useCtrlKeys": true,
     "vim.hlsearch": true,
+    "vim.foldfix": true,
+    "vim.statusBarColorControl": true,
+    "vim.statusBarColors.normal": ["#8FBCBB", "#000"],
+    "vim.statusBarColors.insert": ["#BF616A", "#000"],
+    "vim.statusBarColors.visual": ["#B48EAD", "#000"],
+    "vim.statusBarColors.visualline": ["#B48EAD", "#000"],
+    "vim.statusBarColors.visualblock": ["#A3BE8C", "#000"],
+    "vim.statusBarColors.replace": "#D08770",
+    "vim.statusBarColors.commandlineinprogress": "#007ACC",
+    "vim.statusBarColors.searchinprogressmode": "#007ACC",
+    "vim.statusBarColors.easymotionmode": "#007ACC",
+    "vim.statusBarColors.easymotioninputmode": "#007ACC",
+    "vim.statusBarColors.surroundinputmode": "#007ACC",
+    "vim.handleKeys": { "<C-b>": false, "<C-f>": false, "<C-j>": false },
+    "workbench.colorCustomizations": {
+        "statusBar.background": "#B48EAD",
+        "statusBar.noFolderBackground": "#B48EAD",
+        "statusBar.debuggingBackground": "#B48EAD",
+        "statusBar.foreground": "#000",
+        "statusBar.debuggingForeground": "#000"
+    },
     "vim.normalModeKeyBindings": [
-        { "before": [ "g", "l"], "after": ["$"] },
-        { "before": [ "g", "h"], "after": ["0"] },
-        { "before": [ "g", "p" ], "commands": ["editor.action.showHover"]},
+        { "before": [ "g", "p" ], "commands": ["editor.action.marker.next"]},
+        { "before": [ "g", "l"], "after": ["end"] },
+        { "before": [ "g", "h"], "after": ["home"] },
+        { "before": [ "g", "k" ], "commands": ["editor.action.showHover"]},
         { "before": [ "g", "r" ], "commands": ["editor.action.goToReferences"]},
         { "before": [ "g", "c" ], "commands": ["editor.action.dirtydiff.next"]},
+        { "before": [ "z", "a" ], "commands": ["editor.foldAll"]},
+        { "before": [ "z", "f" ], "commands": ["editor.fold"]},
         { "before": [ "U" ], "after": ["<C-r>"] },
         { "before": [ "<leader>", "q" ], "commands": ["workbench.action.closeActiveEditor"]},
+        { "before": [ "<leader>", "p" ], "commands": ["workbench.action.quickOpen"]},
         { "before": [ "<leader>", "/" ], "commands": ["editor.action.commentLine"]},
         { "before": [ "<leader>", "f" ], "commands": ["editor.action.formatDocument"]},
-        { "before": [ "<leader>", "e" ], "commands": ["workbench.view.explorer"]},
+        // { "before": [ "<leader>", "e" ], "commands": ["workbench.view.explorer"]},
         { "before": [ "<leader>", "b" ], "commands": ["workbench.action.toggleActivityBarVisibility"]},
-        { "before": [ "L" ], "commands": ["workbench.action.nextEditor"] },
-        { "before": [ "H" ], "commands": ["workbench.action.previousEditor"]},
     ],
     "vim.visualModeKeyBindings": [
-        { "before": [ "<leader>", "/" ], "commands": ["editor.action.commentLine"]},
+        { "before": [ "g", "l"], "after": ["end", "<Left>"] },
+        { "before": [ "g", "h"], "after": ["home"] },
+        { "before": [ "<leader>", "/" ], "commands": ["editor.action.blockComment"]}
     ],
     "vim.insertModeKeyBindings": [
         { "before": [ "j", "k" ], "after": [ "<Esc>" ] }
     ],
-    "vim.normalModeKeyBindingsNonRecursive": [ { "before": [ "<leader>", "d" ], "after": [ "d", "d" ] },
-        { "before": [ "<C-n>" ], "commands": [ ":nohl" ] },
-        { "before": [ "K" ], "commands": [ "lineBreakInsert" ], "silent": true }
-    ],
-    "vim.leader": "<space>",
-    "vim.handleKeys": { "<C-b>": false, "<C-f>": false, "<C-j>": false },
-    "files.autoSave": "afterDelay",
-    "explorer.confirmDragAndDrop": false,
-    "editor.mouseWheelScrollSensitivity": 0.5,
-    "workbench.list.mouseWheelScrollSensitivity": 0.5,
-    "editor.cursorSmoothCaretAnimation": true,
-    "workbench.list.smoothScrolling": true,
-    "editor.smoothScrolling": true,
-    "editor.lineNumbers": "relative",
-    "workbench.activityBar.visible": false
+
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "[typescript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
 }
