@@ -1,2 +1,4 @@
-1. "Find in all files" works in newpanel/terminal/sidebar.
-   It should work in peek window just like "go to references"
+vscode: 
+   1. "Find in all files" works in newpanel/terminal/sidebar.
+      It should work in peek window just like "go to references"
+   2. Shortcut for selecting (ctrl+click) in files explorer.
