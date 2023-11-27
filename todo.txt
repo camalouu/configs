@@ -4,3 +4,4 @@ vscode:
    2. Shortcut for selecting (ctrl+click) in files explorer.
    3. QuickFix panel should be navigated with ctrl+j and ctrl+k
    4. Log every command with when clause
+   5. gf for a word creates new file
