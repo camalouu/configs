@@ -5,3 +5,5 @@ vscode:
    3. QuickFix panel should be navigated with ctrl+j and ctrl+k
    4. Log every command with when clause
    5. gf for a word creates new file
+   6. ctrl does not work when top code is folded
+   7. find another way to move the cursor to the center of the screen
