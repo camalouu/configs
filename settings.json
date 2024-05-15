@@ -59,7 +59,7 @@
     "vim.statusBarColors.easymotionmode": "#007ACC",
     "vim.statusBarColors.easymotioninputmode": "#007ACC",
     "vim.statusBarColors.surroundinputmode": "#007ACC",
-    "vim.handleKeys": { "<C-o>": true, "<C-i>": true, "<C-v>": true, "<C-d>":true, "<C-u>":true, "<C-e>": true, "<C-y>": true,},
+    "vim.handleKeys": { "<C-o>": true, "<C-i>": true, "<C-v>": true, "<C-d>":true, "<C-u>":true, "<C-e>": true, "<C-y>": true},
     "workbench.colorCustomizations": {
         "statusBar.background": "#B48EAD",
         "statusBar.noFolderBackground": "#B48EAD",
@@ -82,7 +82,7 @@
         { "before": [ "<leader>", "f" ], "commands": ["editor.action.formatDocument"]},
         { "before": [ "<leader>", "e" ], "commands": ["workbench.view.explorer"]},
         { "before": [ "<leader>", "r" ], "commands": ["workbench.action.showAllEditorsByMostRecentlyUsed"]},
-        { "before": [ "<leader>", "b" ], "commands": ["workbench.action.toggleActivityBarVisibility"]},
+        { "before": [ "<leader>", "b" ], "commands": ["workbench.action.toggleActivityBarVisibility"]}
     ],
     "vim.visualModeKeyBindings": [
         { "before": [ "g", "l"], "after": ["end", "<Left>"] },
@@ -109,5 +109,5 @@
     "[json]": {
         "editor.defaultFormatter": "vscode.json-language-features"
     },
-    "redhat.telemetry.enabled": false,
+    "redhat.telemetry.enabled": false
 }
