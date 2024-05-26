@@ -23,7 +23,7 @@ require('packer').startup(function(use)
   }
   if packer_bootstrap then
     require('packer').sync()
-  end
+  end 
 end)
 
 vim.api.nvim_set_keymap('i', 'jk', '<Esc>', { noremap = true, silent = true })
@@ -41,7 +41,10 @@ vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.number = true
 vim.opt.clipboard = 'unnamedplus'
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
 
+vim.g['sneak#use_ic_scs'] = 1
 vim.g.mapleader = ' '
 vim.g.clipboard = {
     name = 'xclip',
