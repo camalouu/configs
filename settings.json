@@ -1,20 +1,14 @@
 {
-    "window.menuBarVisibility": "compact",
-    "window.commandCenter": false,
-    "window.zoomLevel": 1,
-
-    "workbench.startupEditor": "none",
-    "workbench.colorTheme": "Noctis Obscuro",
-    "workbench.layoutControl.enabled": false,
+    "workbench.colorTheme": "Noctis Sereno",
     "workbench.list.smoothScrolling": true,
     "workbench.panel.opensMaximized": "preserve",
-    "workbench.activityBar.location": "hidden",
-    "workbench.editor.showTabs": "none",
+    "workbench.editor.showTabs":"none",
     "workbench.editor.enablePreview": false,
 
     "editor.fontSize": 15,
     "editor.minimap.enabled": false,
     "editor.fontFamily": "'Hack Nerd font', 'monospace', monospace",
+    "terminal.integrated.fontFamily": "'MesloLGS NF'",
     "editor.cursorSmoothCaretAnimation":"on",
     "editor.smoothScrolling": true,
     // "editor.lineNumbers":"",
@@ -109,5 +103,13 @@
     "[json]": {
         "editor.defaultFormatter": "vscode.json-language-features"
     },
-    "redhat.telemetry.enabled": false
+    "window.commandCenter": false,
+    "window.menuBarVisibility": "toggle",
+    "window.zoomLevel": 1.5,
+    "editor.inlayHints.enabled": "off",
+    "workbench.layoutControl.enabled": false,
+    "workbench.editor.editorActionsLocation": "hidden",
+    "workbench.startupEditor": "none",
+    "workbench.activityBar.location": "hidden",
+    "terminal.integrated.mouseWheelScrollSensitivity": 0.75
 }
