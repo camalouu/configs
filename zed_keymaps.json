@@ -1,0 +1,37 @@
+[
+  {
+    "context": "Editor && vim_mode == insert",
+    "bindings": {
+      "j k": ["workspace::SendKeystrokes", "escape"]
+    }
+  },
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      "ctrl-j": "terminal_panel::ToggleFocus",
+      "g h": "vim::StartOfLine",
+      "g l": "vim::EndOfLine",
+      "g b": "editor::SelectNext",
+      "g k": "editor::Hover",
+      "space e": "project_panel::ToggleFocus"
+    }
+  },
+  {
+    "context": "ProjectPanel && not_editing",
+    "bindings": {
+      "l": "project_panel::OpenPermanent",
+      "space e": "project_panel::ToggleFocus"
+    }
+  },
+  {
+    "context": "vim_mode == visual",
+    "bindings": {
+      "shift-s": [
+        "vim::PushOperator",
+        {
+          "AddSurrounds": {}
+        }
+      ]
+    }
+  }
+]

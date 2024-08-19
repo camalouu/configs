@@ -7,3 +7,8 @@ vscode:
    5. gf for a word creates new file
    6. ctrl does not work when top code is folded
    7. find another way to move the cursor to the center of the screen
+   8. vscode must respect formatting rules of the project.
+
+alacritty:
+   1. Migrate to toml config file
+   2. Find a better theme
