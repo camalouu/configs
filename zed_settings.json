@@ -1,4 +1,11 @@
 {
+  "assistant": {
+    "default_model": {
+      "provider": "copilot_chat",
+      "model": "gpt-4o"
+    },
+    "version": "2"
+  },
   "vim_mode": true,
   "ui_font_size": 17,
   "buffer_font_size": 17,
@@ -15,5 +22,6 @@
   "features": {
     "inline_completion_provider": "copilot"
   },
+  "format_on_save": "off",
   "autosave": "on_focus_change"
 }
