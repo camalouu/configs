@@ -38,7 +38,11 @@
     "context": "Terminal",
     "bindings": {
       "ctrl-n": ["terminal::SendKeystroke", "ctrl-n"],
-      "ctrl-p": ["terminal::SendKeystroke", "ctrl-p"]
+      "ctrl-p": ["terminal::SendKeystroke", "ctrl-p"],
+      "ctrl-f": ["terminal::SendKeystroke", "ctrl-f"],
+      "ctrl-b": ["terminal::SendKeystroke", "ctrl-b"],
+      "alt-f": ["terminal::SendKeystroke", "alt-f"],
+      "alt-b": ["terminal::SendKeystroke", "alt-b"]
     }
   }
 ]
