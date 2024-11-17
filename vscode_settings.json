@@ -1,37 +1,49 @@
 {
+    "window.commandCenter": false,
+    "window.menuBarVisibility": "toggle",
+    "window.zoomLevel": 1.5,
+    "window.restoreFullscreen": true,
+    "window.newWindowDimensions": "fullscreen",
+
     "workbench.colorTheme": "Noctis Sereno",
     "workbench.list.smoothScrolling": true,
     "workbench.panel.opensMaximized": "preserve",
-    "workbench.editor.showTabs":"none",
+    "workbench.editor.showTabs": "none",
     "workbench.editor.enablePreview": false,
-
+    "workbench.editor.restoreViewState": true,
+    "workbench.layoutControl.enabled": false,
+    "workbench.editor.editorActionsLocation": "hidden",
+    "workbench.startupEditor": "none",
+    "workbench.activityBar.location": "hidden",
+    
     "editor.fontSize": 15,
     "editor.minimap.enabled": false,
     "editor.fontFamily": "'Hack Nerd font', 'monospace', monospace",
     "terminal.integrated.fontFamily": "'MesloLGS NF'",
-    "editor.cursorSmoothCaretAnimation":"on",
+    "editor.cursorSmoothCaretAnimation": "on",
     "editor.smoothScrolling": true,
     // "editor.lineNumbers":"",
     "editor.renderLineHighlight": "none",
     "editor.guides.indentation": false,
     "editor.stickyScroll.enabled": true,
+    "editor.inlayHints.enabled": "off",
 
-    "security.workspace.trust.enabled": false,
-
-    "files.autoSave": "afterDelay",
-    
     "terminal.integrated.smoothScrolling": true,
+    "terminal.integrated.mouseWheelScrollSensitivity": 0.75,
     "terminal.integrated.fontSize": 14.5,
+    "terminal.integrated.commandsToSkipShell": [
+        "-workbench.action.quickOpen"
+    ],
 
     "explorer.confirmDragAndDrop": false,
     "explorer.confirmDelete": false,
 
+    "security.workspace.trust.enabled": false,
+    "files.autoSave": "afterDelay",
     "git.autofetch": true,
-
     "zenMode.showTabs": "none",
 
     "vim.leader": "<space>",
-
     // "vim.easymotion": true,
     "vim.surround": true,
     // "vim.incsearch": true,
@@ -42,18 +54,41 @@
     "vim.sneak": true,
     "vim.sneakUseIgnorecaseAndSmartcase": true,
     "vim.statusBarColorControl": true,
-    "vim.statusBarColors.normal": ["#8FBCBB", "#000"],
-    "vim.statusBarColors.insert": ["#BF616A", "#000"],
-    "vim.statusBarColors.visual": ["#B48EAD", "#000"],
-    "vim.statusBarColors.visualline": ["#B48EAD", "#000"],
-    "vim.statusBarColors.visualblock": ["#A3BE8C", "#000"],
+    "vim.statusBarColors.normal": [
+        "#8FBCBB",
+        "#000"
+    ],
+    "vim.statusBarColors.insert": [
+        "#BF616A",
+        "#000"
+    ],
+    "vim.statusBarColors.visual": [
+        "#B48EAD",
+        "#000"
+    ],
+    "vim.statusBarColors.visualline": [
+        "#B48EAD",
+        "#000"
+    ],
+    "vim.statusBarColors.visualblock": [
+        "#A3BE8C",
+        "#000"
+    ],
     "vim.statusBarColors.replace": "#D08770",
     "vim.statusBarColors.commandlineinprogress": "#007ACC",
     "vim.statusBarColors.searchinprogressmode": "#007ACC",
     "vim.statusBarColors.easymotionmode": "#007ACC",
     "vim.statusBarColors.easymotioninputmode": "#007ACC",
     "vim.statusBarColors.surroundinputmode": "#007ACC",
-    "vim.handleKeys": { "<C-o>": true, "<C-i>": true, "<C-v>": true, "<C-d>":true, "<C-u>":true, "<C-e>": true, "<C-y>": true},
+    "vim.handleKeys": {
+        "<C-o>": true,
+        "<C-i>": true,
+        "<C-v>": true,
+        "<C-d>": true,
+        "<C-u>": true,
+        "<C-e>": true,
+        "<C-y>": true,
+    },
     "workbench.colorCustomizations": {
         "statusBar.background": "#B48EAD",
         "statusBar.noFolderBackground": "#B48EAD",
@@ -62,34 +97,179 @@
         "statusBar.debuggingForeground": "#000"
     },
     "vim.normalModeKeyBindings": [
-        { "before": [ "g", "p" ], "commands": ["editor.action.marker.next"]},
-        { "before": [ "g", "l"], "after": ["end"] },
-        { "before": [ "g", "h"], "after": ["home"] },
-        { "before": [ "g", "k" ], "commands": ["editor.action.showHover"]},
-        { "before": [ "g", "r" ], "commands": ["editor.action.goToReferences"]},
-        { "before": [ "g", "c" ], "commands": ["editor.action.dirtydiff.next"]},
-        { "before": [ "z", "f" ], "commands": ["editor.fold"]},
-        { "before": [ "U" ], "after": ["<C-r>"] },
-        { "before": [ "<leader>", "q" ], "commands": ["workbench.action.closeActiveEditor"]},
+        {
+            "before": [
+                "g",
+                "p"
+            ],
+            "commands": [
+                "editor.action.marker.next"
+            ]
+        },
+        {
+            "before": [
+                "g",
+                "l"
+            ],
+            "after": [
+                "end"
+            ]
+        },
+        {
+            "before": [
+                "g",
+                "h"
+            ],
+            "after": [
+                "home"
+            ]
+        },
+        {
+            "before": [
+                "g",
+                "k"
+            ],
+            "commands": [
+                "editor.action.showHover"
+            ]
+        },
+        {
+            "before": [
+                "g",
+                "r"
+            ],
+            "commands": [
+                "editor.action.goToReferences"
+            ]
+        },
+        {
+            "before": [
+                "g",
+                "c"
+            ],
+            "commands": [
+                "editor.action.dirtydiff.next"
+            ]
+        },
+        {
+            "before": [
+                "z",
+                "f"
+            ],
+            "commands": [
+                "editor.fold"
+            ]
+        },
+        {
+            "before": [
+                "U"
+            ],
+            "after": [
+                "<C-r>"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "q"
+            ],
+            "commands": [
+                "workbench.action.closeActiveEditor"
+            ]
+        },
         // { "before": [ "<leader>", "p" ], "commands": ["workbench.action.quickOpen"]},
-        { "before": [ "<leader>", "/" ], "commands": ["editor.action.commentLine"]},
-        { "before": [ "<leader>", "f" ], "commands": ["editor.action.formatDocument"]},
-        { "before": [ "<leader>", "e" ], "commands": ["workbench.view.explorer"]},
-        { "before": [ "<leader>", "r" ], "commands": ["workbench.action.showAllEditorsByMostRecentlyUsed"]},
-        { "before": [ "<leader>", "b" ], "commands": ["workbench.action.toggleActivityBarVisibility"]}
+        {
+            "before": [
+                "<leader>",
+                "/"
+            ],
+            "commands": [
+                "editor.action.commentLine"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "f"
+            ],
+            "commands": [
+                "editor.action.formatDocument"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "e"
+            ],
+            "commands": [
+                "workbench.view.explorer"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "r"
+            ],
+            "commands": [
+                "workbench.action.showAllEditorsByMostRecentlyUsed"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "b"
+            ],
+            "commands": [
+                "workbench.action.toggleActivityBarVisibility"
+            ]
+        },
     ],
     "vim.visualModeKeyBindings": [
-        { "before": [ "g", "l"], "after": ["end", "<Left>"] },
-        { "before": [ "g", "h"], "after": ["home"] },
-        { "before": [ "<leader>", "/" ], "commands": ["editor.action.blockComment"]}
+        {
+            "before": [
+                "g",
+                "l"
+            ],
+            "after": [
+                "end",
+                "<Left>"
+            ]
+        },
+        {
+            "before": [
+                "g",
+                "h"
+            ],
+            "after": [
+                "home"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "/"
+            ],
+            "commands": [
+                "editor.action.blockComment"
+            ]
+        }
     ],
     "vim.insertModeKeyBindings": [
-        { "before": [ "j", "k" ], "after": [ "<Esc>" ] }
+        {
+            "before": [
+                "j",
+                "k"
+            ],
+            "after": [
+                "<Esc>"
+            ]
+        }
     ],
-
     "typescript.updateImportsOnFileMove.enabled": "always",
+    "typescript.format.insertSpaceAfterOpeningAndBeforeClosingEmptyBraces": false,
     "[typescript]": {
-        "editor.defaultFormatter": "vscode.typescript-language-features"
+        "editor.defaultFormatter": "vscode.typescript-language-features",
+        "editor.tabSize": 2
     },
     "[javascript]": {
         "editor.defaultFormatter": "vscode.typescript-language-features"
@@ -103,13 +283,14 @@
     "[json]": {
         "editor.defaultFormatter": "vscode.json-language-features"
     },
-    "window.commandCenter": false,
-    "window.menuBarVisibility": "toggle",
-    "window.zoomLevel": 1.5,
-    "editor.inlayHints.enabled": "off",
-    "workbench.layoutControl.enabled": false,
-    "workbench.editor.editorActionsLocation": "hidden",
-    "workbench.startupEditor": "none",
-    "workbench.activityBar.location": "hidden",
-    "terminal.integrated.mouseWheelScrollSensitivity": 0.75
+    "yaml.schemas": {
+        "file:///home/viktor/.vscode/extensions/atlassian.atlascode-3.0.10/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+    },
+    "github.copilot.enable": {
+        "*": false,
+        "plaintext": false,
+        "markdown": false,
+        "scminput": false
+    },
+    "makefile.configureOnOpen": true,
 }
