@@ -23,8 +23,8 @@
     "inline_completion_provider": "copilot"
   },
   "format_on_save": "off",
-  "autosave": "on_focus_change",
-  "language_servers": ["!eslint", "..."],
+  "autosave": "off",
+  "language_servers": ["!typescript-language-server", "!eslint", "..."],
   "terminal": {
     "option_as_meta": true
   }
