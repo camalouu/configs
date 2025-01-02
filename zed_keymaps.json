@@ -17,6 +17,12 @@
     }
   },
   {
+    "context": "vim_mode == normal",
+    "bindings": {
+      "U": "editor::Redo"
+    }
+  },
+  {
     "context": "ProjectPanel && not_editing",
     "bindings": {
       "l": "project_panel::OpenPermanent",
