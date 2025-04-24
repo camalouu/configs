@@ -1,0 +1,19 @@
+[window]
+dimensions = { columns = 100, lines = 25 }
+opacity = 0.9
+decorations = "none"
+padding = { x = 5, y = 5 }
+
+[font]
+size = 16
+
+[[keyboard.bindings]]
+    action = "SpawnNewInstance"
+    key    = "N"
+    mods   = "Control|Shift"
+
+[general]
+import = [
+    "~/.config/alacritty/themes/themes/ashes_dark.toml"
+]
+

@@ -1,0 +1,62 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: Open Default Keymap`
+// from the command palette.
+[
+  {
+    "context": "Editor && vim_mode == insert",
+    "bindings": {
+      "j k": ["workspace::SendKeystrokes", "escape"]
+    }
+  },
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      // put key-bindings here if you want them to work in normal & visual mode
+      "ctrl-j": "terminal_panel::ToggleFocus",
+      "g h": "vim::StartOfLine",
+      "g l": "vim::EndOfLine",
+      "g b": "editor::SelectNext",
+      "g k": "editor::Hover",
+      "space e": "project_panel::ToggleFocus"
+    }
+  },
+  {
+    "context": "vim_mode == normal",
+    "bindings": {
+      "U": "editor::Redo"
+    }
+  },
+  {
+    "context": "ProjectPanel && not_editing",
+    "bindings": {
+      "l": "project_panel::OpenPermanent",
+      "space e": "project_panel::ToggleFocus"
+    }
+  },
+  {
+    "context": "vim_mode == visual",
+    "bindings": {
+      "shift-s": [
+        "vim::PushOperator",
+        {
+          "AddSurrounds": {}
+        }
+      ]
+    }
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "ctrl-n": ["terminal::SendKeystroke", "ctrl-n"],
+      "ctrl-p": ["terminal::SendKeystroke", "ctrl-p"],
+      "ctrl-f": ["terminal::SendKeystroke", "ctrl-f"],
+      "ctrl-b": ["terminal::SendKeystroke", "ctrl-b"],
+      "alt-f": ["terminal::SendKeystroke", "alt-f"],
+      "alt-b": ["terminal::SendKeystroke", "alt-b"]
+    }
+  }
+]

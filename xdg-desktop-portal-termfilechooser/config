@@ -1,0 +1,6 @@
+### $XDG_CONFIG_HOME/xdg-desktop-portal-termfilechooser/config ###
+
+[filechooser]
+cmd=yazi-wrapper.sh
+default_dir=$HOME
+env=TERMCMD='alacritty -t "terminal filechooser" -e'
