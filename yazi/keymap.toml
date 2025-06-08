@@ -13,6 +13,10 @@ on   = "i"
 run  = "cd --interactive"
 desc = "go"
 
+[[manager.prepend_keymap]]
+on   = [ "g", "m" ]
+run  = "cd /run/media/viktor"
+desc = "Enter to connected flash drive"
 
 [[manager.prepend_keymap]]
 on  = "y"
