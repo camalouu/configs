@@ -7,44 +7,52 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "languages": {
+    "TypeScript": {
+      "show_edit_predictions": true
+    }
+  },
+  "notification_panel": {
+    "dock": "left"
+  },
   "show_edit_predictions": false,
-  "inline_completions": {
-    "disabled_globs": [
-      ".env",
-      "exercise01.rs"
-    ]
+  "edit_predictions": {
+    "disabled_globs": [".env", "exercise01.rs"]
   },
   "ssh_connections": [
     {
       "host": "box",
       "projects": [
         {
-          "paths": [
-            "~/challanges"
-          ]
+          "paths": ["~/challanges"]
         },
         {
-          "paths": [
-            "~/scad2024_g117/ex1"
-          ]
+          "paths": ["~/scad2024_g117/ex1"]
         }
       ]
     }
   ],
-  "assistant": {
+  "agent": {
+    "play_sound_when_agent_done": true,
+    "always_allow_tool_actions": true,
+    "default_profile": "minimal",
+    "inline_assistant_model": {
+      "provider": "copilot_chat",
+      "model": "gpt-4o"
+    },
     "default_model": {
       "provider": "zed.dev",
-      "model": "claude-3-7-sonnet-thinking-latest"
+      "model": "claude-sonnet-4"
     },
     "version": "2"
   },
   "vim_mode": true,
-  "ui_font_size": 18,
-  "buffer_font_size": 21.0,
+  "ui_font_size": 19,
+  "buffer_font_size": 19,
   "theme": {
     "mode": "system",
     "light": "Catbox",
-    "dark": "Ayu Dark"
+    "dark": "Catbox"
   },
   "vim": {
     "use_system_clipboard": "always",
@@ -59,5 +67,8 @@
   "language_servers": ["!typescript-language-server", "!eslint", "..."],
   "terminal": {
     "option_as_meta": true
-  }
+  },
+  "tabs": { "activate_on_close": null },
+  "tab_bar": { "show": false },
+  "agent_font_size": 19
 }

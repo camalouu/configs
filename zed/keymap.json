@@ -17,9 +17,10 @@
     "bindings": {
       // put key-bindings here if you want them to work in normal & visual mode
       "ctrl-j": "terminal_panel::ToggleFocus",
+      "ctrl-shift-j": "workspace::ToggleRightDock",
       "g h": "vim::StartOfLine",
       "g l": "vim::EndOfLine",
-      "g b": "editor::SelectNext",
+      "g j": "editor::SelectNext",
       "g k": "editor::Hover",
       "space e": "project_panel::ToggleFocus"
     }
@@ -40,12 +41,7 @@
   {
     "context": "vim_mode == visual",
     "bindings": {
-      "shift-s": [
-        "vim::PushOperator",
-        {
-          "AddSurrounds": {}
-        }
-      ]
+      "shift-s": ["vim::PushAddSurrounds", {}]
     }
   },
   {
@@ -57,6 +53,18 @@
       "ctrl-b": ["terminal::SendKeystroke", "ctrl-b"],
       "alt-f": ["terminal::SendKeystroke", "alt-f"],
       "alt-b": ["terminal::SendKeystroke", "alt-b"]
+    }
+  },
+  {
+    "context": "(Editor || ProjectPanel) && not_editing",
+    "bindings": {
+      "ctrl-shift-j": "workspace::ToggleRightDock"
+    }
+  },
+  {
+    "context": "AssistantPanel && not_editing",
+    "bindings": {
+      "ctrl-shift-j": "workspace::ToggleRightDock"
     }
   }
 ]
