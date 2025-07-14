@@ -22,6 +22,7 @@
       "g l": "vim::EndOfLine",
       "g j": "editor::SelectNext",
       "g k": "editor::Hover",
+      "g r": "editor::FindAllReferences",
       "space e": "project_panel::ToggleFocus"
     }
   },
