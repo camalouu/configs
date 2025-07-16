@@ -67,5 +67,10 @@
     "bindings": {
       "ctrl-shift-j": "workspace::ToggleRightDock"
     }
+  },
+  {
+    "bindings": {
+      "ctrl-shift-w": null
+    }
   }
 ]
