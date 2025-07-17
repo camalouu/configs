@@ -28,7 +28,7 @@ end)
 
 vim.api.nvim_set_keymap('i', 'jk', '<Esc>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', 'vie', 'ggVG', { noremap = true })
-vim.api.nvim_set_keymap('n', 'gb', 'viw', { noremap = true })
+vim.api.nvim_set_keymap('n', 'gj', 'viw', { noremap = true })
 vim.api.nvim_set_keymap('n', 'gh', '0', { noremap = true })
 vim.api.nvim_set_keymap('n', 'gl', '$', { noremap = true })
 vim.api.nvim_set_keymap('v', 'gh', '0', { noremap = true })
