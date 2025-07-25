@@ -1,29 +1,29 @@
 [[plugin.deps]]
 use = "yazi-rs/plugins:smart-enter"
-rev = "2730199"
-hash = "7918aab6a71caf31b58411f789195677"
+rev = "de53d90"
+hash = "56fdabc96fc1f4d53c96eb884b02a5be"
 
 [[plugin.deps]]
 use = "Reledia/glow"
-rev = "2da96e3"
-hash = "f9ee1436e3b853508d87f7d49dce56e6"
+rev = "bd3eaa5"
+hash = "92b5c58159a51c567f82b618cee2b78"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:toggle-pane"
-rev = "b12a9ab"
-hash = "5c9dda1a587b8f5b6f63e3d5375bda88"
+rev = "de53d90"
+hash = "d6f60c24d8c0cf57a855bf46115b2502"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:no-status"
-rev = "b12a9ab"
-hash = "513a23ac28e1eaa626f3a1bb6c8130d0"
+rev = "de53d90"
+hash = "3e023d31f29201efdac2a6ae35fedb78"
 
 [[flavor.deps]]
 use = "kmlupreti/ayu-dark"
-rev = "5412a78"
-hash = "60690920e8c0f9f81ff02009de5d156f"
+rev = "5f600aa"
+hash = "a05f94b9a20b64d814c7631074d65c4a"
 
 [[flavor.deps]]
 use = "gosxrgxx/flexoki-dark"
-rev = "3e8cfba"
-hash = "56a96293138f09da7fae25ee405a4393"
+rev = "28e1977"
+hash = "9dbbb64ea20f9f1271c31951dea55c7b"
