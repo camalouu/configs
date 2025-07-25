@@ -15,6 +15,12 @@ require('packer').startup(function(use)
   use 'tpope/vim-surround'
   use 'justinmk/vim-sneak'
   use {
+      'numToStr/Comment.nvim',
+      config = function()
+        require('Comment').setup()
+      end
+  }
+  use {
     "windwp/nvim-autopairs",
     event = "InsertEnter",
     config = function()
@@ -27,6 +33,8 @@ require('packer').startup(function(use)
 end)
 
 vim.api.nvim_set_keymap('i', 'jk', '<Esc>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('i', '<C-BS>', '<C-w>', { noremap = true })
+vim.api.nvim_set_keymap('i', '<C-Del>', '<C-O>dw', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', 'vie', 'ggVG', { noremap = true })
 vim.api.nvim_set_keymap('n', 'gj', 'viw', { noremap = true })
 vim.api.nvim_set_keymap('n', 'gh', '0', { noremap = true })
