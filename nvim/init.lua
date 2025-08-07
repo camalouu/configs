@@ -51,6 +51,7 @@ vim.opt.number = true
 vim.opt.clipboard = 'unnamedplus'
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
+vim.opt.wrap = false
 
 vim.g['sneak#use_ic_scs'] = 1
 vim.g.mapleader = ' '
