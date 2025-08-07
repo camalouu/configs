@@ -1,24 +1,24 @@
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on   = "<Enter>"
 run  = "plugin smart-enter"
 desc = "Enter the child directory, or open the file"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on   = "l"
 run  = "plugin smart-enter"
 desc = "Enter the child directory, or open the file"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on   = "i"
 run  = "cd --interactive"
 desc = "go"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on   = [ "g", "m" ]
 run  = "cd /run/media/viktor"
 desc = "Enter to connected flash drive"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on  = "y"
 run = [
  '''
@@ -30,12 +30,36 @@ run = [
  "yank"
 ]
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on   = "T"
 run  = "plugin toggle-pane min-preview"
 desc = "Show or hide the preview pane"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on   = "T"
 run  = "plugin toggle-pane max-preview"
 desc = "Maximize or restore the preview pane"
+
+[[mgr.prepend_keymap]]
+on = "R"
+run = [
+'''
+shell --block --
+for file in "$@"; do
+  case "$file" in
+    *.hurl)
+      output=$(hurl --variables-file variables.env "$file" 2>&1)
+      echo "$output" | jq . > /dev/null 2>&1
+      if [ $? -eq 0 ]; then
+        # Valid JSON, pretty print with jq + bat
+        echo "$output" | jq --color-output | bat --paging=always --color=always
+      else
+        # Not JSON, just show raw output with bat for paging & color (bat autodetects)
+        echo "$output" | bat --paging=always --color=always
+      fi
+      echo ""
+      ;;
+  esac
+done
+'''
+]
