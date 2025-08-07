@@ -59,6 +59,9 @@ for file in "$@"; do
       fi
       echo ""
       ;;
+    *.sh) /bin/zsh "$file"; echo ""; read -p "Press enter to continue..."; ;;
+    *.py) python3 "$file"; echo -e "Press enter to continue..."; read -r;;
+    *.js) node "$file"; echo -e "Press enter to continue..."; read -r;;
   esac
 done
 '''
