@@ -48,16 +48,18 @@ shell --block --
 for file in "$@"; do
   case "$file" in
     *.hurl)
-      output=$(hurl --variables-file variables.env "$file" 2>&1)
-      echo "$output" | jq . > /dev/null 2>&1
-      if [ $? -eq 0 ]; then
-        # Valid JSON, pretty print with jq + bat
-        echo "$output" | jq --color-output | bat --paging=always --color=always
+      tmp_file=$(mktemp)
+      if [ -f "variables.env" ]; then
+        hurl --variables-file variables.env "$file" > "$tmp_file" 2>&1
       else
-        # Not JSON, just show raw output with bat for paging & color (bat autodetects)
-        echo "$output" | bat --paging=always --color=always
+        hurl "$file" > "$tmp_file" 2>&1
       fi
-      echo ""
+      if jq . "$tmp_file" > /dev/null 2>&1; then
+        jq . "$tmp_file" > "${tmp_file}.json"
+        mv "${tmp_file}.json" "$tmp_file"
+      fi
+      less "$tmp_file"
+      rm -f "$tmp_file"
       ;;
     *.sh) /bin/zsh "$file"; echo ""; read -p "Press enter to continue..."; ;;
     *.py) python3 "$file"; echo -e "Press enter to continue..."; read -r;;
