@@ -105,7 +105,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Use powerline
-USE_POWERLINE="true"
+# USE_POWERLINE="true"
 # Has weird character width
 # Example:
 #    is not a diamond
@@ -134,23 +134,16 @@ function y() {
 	rm -f -- "$tmp"
 }
 
-#export ZELLIJ_AUTO_ATTACH=true  # Automatically attach to existing session
-#export ZELLIJ_AUTO_EXIT=true   # Exit the shell when Zellij exits
+export ZELLIJ_AUTO_ATTACH=true  # Automatically attach to existing session
+export ZELLIJ_AUTO_EXIT=true   # Exit the shell when Zellij exits
 
-#eval "$(zellij setup --generate-auto-start zsh)"
-
-function pomo() {
-    arg1=$1
-    shift
-    args="$*"
-
-    min=${arg1:?Example: pomo 15 Take a break}
-    sec=$((min * 60))
-    msg="${args:?Example: pomo 15 Take a break}"
-
-    while true; do
-        sleep "${sec:?}" && echo "${msg:?}" && notify-send -u critical -t 0 "${msg:?}"
-    done
-}
+# eval "$(zellij setup --generate-auto-start zsh)"
+if [[ "$ALACZELL" = "true" ]]; then
+    eval "$(zellij setup --generate-auto-start zsh)"
+fi
 
 eval "$(zoxide init --cmd=cd zsh)"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

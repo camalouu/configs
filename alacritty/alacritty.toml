@@ -16,4 +16,5 @@ size = 16
 import = [
     "~/.config/alacritty/themes/themes/ashes_dark.toml"
 ]
-
+[env]
+ALACZELL = "true"
