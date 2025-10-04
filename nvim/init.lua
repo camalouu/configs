@@ -55,15 +55,32 @@ vim.opt.wrap = false
 
 vim.g['sneak#use_ic_scs'] = 1
 vim.g.mapleader = ' '
-vim.g.clipboard = {
-    name = 'xclip',
+
+local session = os.getenv("XDG_SESSION_TYPE")
+if session == "wayland" then
+  vim.g.clipboard = {
+    name = "wl-clipboard",
     copy = {
-        ['+'] = 'xclip -selection clipboard',
-        ['*'] = 'xclip -selection primary',
+        ['+'] = { 'wl-copy', '--trim-newline' },
+        ['*'] = { 'wl-copy', '--primary', '--trim-newline' },
     },
     paste = {
-        ['+'] = 'xclip -selection clipboard -o',
-        ['*'] = 'xclip -selection primary -o',
+        ['+'] = { 'wl-paste', '--no-newline' },
+        ['*'] = { 'wl-paste', '--primary', '--no-newline' },
+    },
+    cache_enabled = 1,
+  }
+else
+  vim.g.clipboard = {
+    name = "xclip",
+    copy = {
+      ["+"] = "xclip -selection clipboard",
+      ["*"] = "xclip -selection primary",
+    },
+    paste = {
+      ["+"] = "xclip -selection clipboard -o",
+      ["*"] = "xclip -selection primary -o",
     },
     cache_enabled = 0,
-}
+  }
+end
