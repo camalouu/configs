@@ -13,8 +13,9 @@ input {
             // For more information, see xkeyboard-config(7).
 
             // For example:
-            // layout "us,ru"
+            layout "us,ru"
             // options "grp:win_space_toggle,compose:ralt,ctrl:nocaps"
+            options "compose:ralt,ctrl:nocaps"
 
             // If this section is empty, niri will fetch xkb settings
             // from org.freedesktop.locale1. You can control these using
@@ -269,7 +270,7 @@ layout {
 // See the binds section below for more spawn examples.
 
 // This line starts waybar, a commonly used bar for Wayland compositors.
-// spawn-at-startup "waybar"
+spawn-at-startup "waybar"
 spawn-at-startup "swww-daemon"
 spawn-at-startup "swayosd-server"
 
@@ -403,9 +404,11 @@ binds {
     XF86AudioPrev allow-when-locked=true { spawn "swayosd-client" "--playerctl=prev"; }
 
     // # Lock indicator keys (optional but works fine under swayosd)
-    Caps_Lock { spawn "swayosd-client" "--caps-lock"; }
-    Num_Lock { spawn "swayosd-client" "--num-lock"; }
-    Scroll_Lock { spawn "swayosd-client" "--scroll-lock"; }
+    // Caps_Lock { spawn "swayosd-client" "--caps-lock"; }
+    // Num_Lock { spawn "swayosd-client" "--num-lock"; }
+    // Scroll_Lock { spawn "swayosd-client" "--scroll-lock"; }
+
+    Mod+Shift+C { spawn "makoctl" "dismiss" "-a"; }
 
     // XF86AudioNext { spawn "playerctl next"; }
     // XF86AudioPlay { spawn "playerctl play-pause"; }
@@ -420,7 +423,12 @@ binds {
     // Open/close the Overview: a zoomed-out view of workspaces and windows.
     // You can also move the mouse into the top-left hot corner,
     // or do a four-finger swipe up on a touchpad.
-    Mod+O repeat=false { toggle-overview; }
+    // Mod+O repeat=false { toggle-overview; }
+    Mod+O repeat=false { spawn-sh "niri msg action toggle-overview;pkill -SIGUSR1 waybar"; }
+
+    Mod+Space { spawn-sh "niri msg action switch-layout next; swayosd-client --custom-message='layout changed'"; }
+    
+    
 
     Mod+Q repeat=false { close-window; }
 

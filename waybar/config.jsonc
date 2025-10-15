@@ -1,0 +1,35 @@
+{
+  "start-hidden": true,
+  "layer": "top",
+  "position": "top",
+  "modules-left": ["sway/workspaces", "custom/media"],
+  "modules-center": ["clock"],
+  "modules-right": ["custom/weather", "network", "battery"],
+
+  "clock": {
+    "format": "{:%a %d %b %H:%M}"
+  },
+
+  "network": {
+    "format-wifi": "  {essid}",
+    "format-ethernet": "  eth",
+    "format-disconnected": ""
+  },
+
+  "battery": {
+    "format": "{capacity}% {icon}",
+    "format-icons": ["", "", "", "", ""]
+  },
+
+  "custom/media": {
+    "exec": "~/.config/waybar/scripts/media.sh",
+    "interval": 2,
+    "format": "{}"
+  },
+
+  "custom/weather": {
+    "exec": "curl -s 'https://wttr.in/?format=1&m' | head -n 1",
+    "interval": 600,
+    "format": "{}"
+  }
+}
