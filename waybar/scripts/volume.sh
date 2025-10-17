@@ -8,7 +8,7 @@ MUTE=$(pactl get-sink-mute "$SINK" | awk '{print $2}')
 if [ "$MUTE" = "yes" ] || [ "$VOL" -eq 0 ]; then
     ICON=""
 elif [ "$VOL" -lt 50 ]; then
-    ICON=""; notify-send aaaaa;
+    ICON="";
 else
     ICON=""
 fi
