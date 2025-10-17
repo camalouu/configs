@@ -11,6 +11,7 @@ vscode:
 
 niri:
    1. Screen sharing isn't working
-   2. 4k videos aren't playing, nvidia driver problem
-   3. Shortcut should focus on the existing app instad of creating a new instance
-   4. Test teams, zoom, telegram video calls.
+   2. Shortcut should focus on the existing app instad of creating a new instance
+   3. Test teams, zoom, telegram video calls.
+   4. Test second monitor
+   5. wifi, bluetooth menus
