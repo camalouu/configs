@@ -9,9 +9,10 @@ vscode:
    7. find another way to move the cursor to the center of the screen
    8. vscode must respect formatting rules of the project.
 
+yazi:
+   1. Keys for chmod
+
 niri:
-   1. Screen sharing isn't working
-   2. Shortcut should focus on the existing app instad of creating a new instance
-   3. Test teams, zoom, telegram video calls.
-   4. Test second monitor
-   5. wifi, bluetooth menus
+   1. Test zoom.
+   2. Test second monitor
+   3. wifi, bluetooth settings from terminal
