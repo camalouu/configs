@@ -14,5 +14,5 @@ yazi:
 
 niri:
    1. Test zoom.
-   2. Test second monitor
+   2. Test second monitor, problem
    3. wifi, bluetooth settings from terminal
