@@ -7,6 +7,8 @@ in
   # PACKAGES
   environment.systemPackages = with pkgs; [
     wget
+    curl
+    hurl
     gh
     git
     ripgrep
@@ -16,18 +18,21 @@ in
     zoxide
     unstable.yazi
     neovim
-    firefox
+    # firefox
     chromium
     unstable.zed-editor
     mpv
     xclip
+    wl-clipboard
     jq
     unzip
     bottom
     gnome-tweaks
-    touchegg
     gnomeExtensions.paperwm
     gnomeExtensions.run-or-raise
+    dialect
+    speedcrunch
+    kdePackages.kdeconnect-kde
   ];
   # BOOT & NETWORKING
   boot.loader.systemd-boot.enable = true;
@@ -43,6 +48,7 @@ in
     packages = [ pkgs.terminus_font ];
     useXkbConfig = true;
   };
+  programs.firefox.enable = true;
   programs.dconf.enable = true;
   services.gnome.gnome-keyring.enable = true;
   xdg.portal.enable = true;
@@ -62,7 +68,7 @@ in
     videoDrivers = [ "nvidia" ];
     displayManager.gdm = {
       enable = true;
-      wayland = false;
+      wayland = true;
     };
     desktopManager.gnome.enable = true;
   };
@@ -77,7 +83,7 @@ in
     powerManagement.enable = false;
     nvidiaSettings = true;
     package = config.boot.kernelPackages.nvidiaPackages.stable;
-
+    
     prime = {
       sync.enable = true;
       intelBusId = "PCI:0:2:0";
