@@ -64,7 +64,12 @@ keymap('n', 'gh', '0', opts)
 keymap('n', 'gl', '$', opts)
 keymap('v', 'gh', '0', opts)
 keymap('v', 'gl', '$', opts)
-
+keymap('n', '<Esc><Esc>', ':noh<CR>', opts)
+keymap('v', '<', '<gv', opts)
+keymap('v', '>', '>gv', opts)
+keymap('n', 'g/', 'gcc', { noremap = false })
+keymap('v', 'g/', 'gc', { noremap = false })
+keymap('n', 'vv', 'V', opts)
 
 -- Clipboard configuration with silent fallback
 local function has_command(cmd)
