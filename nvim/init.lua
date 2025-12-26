@@ -1,3 +1,4 @@
+-- Packer bootstrap
 local ensure_packer = function()
   local fn = vim.fn
   local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
@@ -12,36 +13,30 @@ end
 local packer_bootstrap = ensure_packer()
 
 require('packer').startup(function(use)
+  use 'wbthomason/packer.nvim'
   use 'tpope/vim-surround'
   use 'justinmk/vim-sneak'
   use {
-      'numToStr/Comment.nvim',
-      config = function()
-        require('Comment').setup()
-      end
-  }
-  use {
-    "windwp/nvim-autopairs",
-    event = "InsertEnter",
+    'numToStr/Comment.nvim',
     config = function()
-        require("nvim-autopairs").setup {}
+      require('Comment').setup()
     end
   }
+  use {
+    'windwp/nvim-autopairs',
+    event = 'InsertEnter',
+    config = function()
+      require('nvim-autopairs').setup {}
+    end
+  }
+  
   if packer_bootstrap then
     require('packer').sync()
   end 
 end)
 
-vim.api.nvim_set_keymap('i', 'jk', '<Esc>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('i', '<C-BS>', '<C-w>', { noremap = true })
-vim.api.nvim_set_keymap('i', '<C-Del>', '<C-O>dw', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', 'vie', 'ggVG', { noremap = true })
-vim.api.nvim_set_keymap('n', 'gj', 'viw', { noremap = true })
-vim.api.nvim_set_keymap('n', 'gh', '0', { noremap = true })
-vim.api.nvim_set_keymap('n', 'gl', '$', { noremap = true })
-vim.api.nvim_set_keymap('v', 'gh', '0', { noremap = true })
-vim.api.nvim_set_keymap('v', 'gl', '$', { noremap = true })
-
+-- Options
+vim.g.mapleader = ' '
 vim.opt.timeoutlen = 300
 vim.opt.expandtab = true
 vim.opt.tabstop = 4
@@ -53,24 +48,44 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.wrap = false
 
+-- Sneak
 vim.g['sneak#use_ic_scs'] = 1
-vim.g.mapleader = ' '
+
+-- Keymaps
+local keymap = vim.api.nvim_set_keymap
+local opts = { noremap = true, silent = true }
+
+keymap('i', 'jk', '<Esc>', opts)
+keymap('i', '<C-BS>', '<C-w>', { noremap = true })
+keymap('i', '<C-Del>', '<C-O>dw', opts)
+keymap('n', 'vie', 'ggVG', opts)
+keymap('n', 'gj', 'viw', opts)
+keymap('n', 'gh', '0', opts)
+keymap('n', 'gl', '$', opts)
+keymap('v', 'gh', '0', opts)
+keymap('v', 'gl', '$', opts)
+
+
+-- Clipboard configuration with silent fallback
+local function has_command(cmd)
+  return vim.fn.executable(cmd) == 1
+end
 
 local session = os.getenv("XDG_SESSION_TYPE")
-if session == "wayland" then
+if session == "wayland" and has_command("wl-copy") and has_command("wl-paste") then
   vim.g.clipboard = {
     name = "wl-clipboard",
     copy = {
-        ['+'] = { 'wl-copy', '--trim-newline' },
-        ['*'] = { 'wl-copy', '--primary', '--trim-newline' },
+      ['+'] = { 'wl-copy', '--trim-newline' },
+      ['*'] = { 'wl-copy', '--primary', '--trim-newline' },
     },
     paste = {
-        ['+'] = { 'wl-paste', '--no-newline' },
-        ['*'] = { 'wl-paste', '--primary', '--no-newline' },
+      ['+'] = { 'wl-paste', '--no-newline' },
+      ['*'] = { 'wl-paste', '--primary', '--no-newline' },
     },
     cache_enabled = 1,
   }
-else
+elseif has_command("xclip") then
   vim.g.clipboard = {
     name = "xclip",
     copy = {
@@ -83,4 +98,7 @@ else
     },
     cache_enabled = 0,
   }
+else
+  -- Fallback: disable system clipboard if no tool available
+  vim.opt.clipboard = ""
 end
