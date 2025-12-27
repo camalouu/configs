@@ -185,6 +185,8 @@ in
       ls = "lsd";
       lg = "lazygit";
       gst = "git status";
+      s = "sudo nixos-rebuild switch";
+      b = "sudo nixos-rebuild build";
     };
   };
 
