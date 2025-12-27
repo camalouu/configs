@@ -1,5 +1,6 @@
 [mgr]
 ratio = [1, 2, 3]
+show_hidden = true
 
 [opener]
 play = [
@@ -13,9 +14,9 @@ open = [
 ]
 
 [plugin]
-prepend_previewers = [
-  { name = "*.md", run = "glow" },
-]
+# prepend_previewers = [
+#   { name = "*.md", run = "glow" },
+# ]
 # preloaders = []
 # previewers = []
 
