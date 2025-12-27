@@ -17,4 +17,4 @@ import = [
     "~/.config/alacritty/themes/themes/ashes_dark.toml"
 ]
 [env]
-ALACZELL = "true"
+ALACZELL = "false"
