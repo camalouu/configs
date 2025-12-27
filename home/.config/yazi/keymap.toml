@@ -19,6 +19,21 @@ run  = "cd /run/media/viktor"
 desc = "Enter to connected flash drive"
 
 [[mgr.prepend_keymap]]
+on   = [ "g", "s" ]
+run  = "cd /mnt/ssd"
+desc = "Enter to Verbatim SSD"
+
+[[mgr.prepend_keymap]]
+on   = [ "g", "n" ]
+run  = "cd /home/viktor/configs/system/etc/nixos"
+desc = "Enter nix config"
+
+[[mgr.prepend_keymap]]
+on   = [ "g", "c" ]
+run  = "cd /home/viktor/configs"
+desc = "Enter configs repo"
+
+[[mgr.prepend_keymap]]
 on  = "y"
 run = [
  '''
