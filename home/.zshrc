@@ -25,3 +25,7 @@ bindkey '^H' backward-kill-word
 
 # Ctrl+Delete to delete word forward (your existing one)
 bindkey '^[[3;5~' kill-word
+
+# Ctrl+Left / Ctrl+Right — move by word.
+bindkey '\e[1;5D' backward-word
+bindkey '\e[1;5C' forward-word

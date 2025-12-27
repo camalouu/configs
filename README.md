@@ -19,3 +19,4 @@ Short TODO
 - Add top-level install script (simulate/apply/rollback).
 - Add CI to run `stow --simulate` and scan for accidental secrets.
 - Add a small restore/troubleshoot helper for broken symlinks.
+- Provide an easy helper to stow/un-stow a single package inside `home` (current `stow -D home` operates on all packages).

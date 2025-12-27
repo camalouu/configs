@@ -15,6 +15,7 @@ in
     # Development
     gh
     git
+    lazygit
     neovim
     unstable.zed-editor
     
@@ -31,7 +32,6 @@ in
     bottom
     xclip
     stow
-    lazygit
     
     # Browsers
     chromium
@@ -183,6 +183,8 @@ in
     shellAliases = {
       ll = "lsd -la";
       ls = "lsd";
+      lg = "lazygit";
+      gst = "git status";
     };
   };
 

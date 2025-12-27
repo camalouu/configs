@@ -62,6 +62,7 @@
   "features": {
     "edit_prediction_provider": "zed"
   },
+  "remove_trailing_whitespace_on_save": false,
   "format_on_save": "off",
   "autosave": "off",
   "language_servers": ["!typescript-language-server", "!eslint", "..."],
