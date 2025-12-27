@@ -41,6 +41,9 @@ in
     gnomeExtensions.paperwm
     gnomeExtensions.run-or-raise
     gnomeExtensions.clipboard-indicator
+    gnomeExtensions.vitals
+
+    xdg-desktop-portal-termfilechooser
     
     # Applications
     dialect
@@ -50,11 +53,17 @@ in
     qmk
     dos2unix
     via
+
+    # nix things, lsp
+    nixd
+    nil
   ];
 
   # SYSTEM
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+
+
   boot.blacklistedKernelModules = [ "nouveau" ];
   
   networking.hostName = "camalouu";
@@ -99,6 +108,7 @@ in
       wayland = true;
     };
     desktopManager.gnome.enable = true;
+    xkb.options = "ctrl:nocaps,compose:ralt";
   };
 
   # NVIDIA
@@ -108,7 +118,7 @@ in
   };
   hardware.nvidia = {
     modesetting.enable = true;
-    open = true;
+    open = false;
     powerManagement.enable = false;
     nvidiaSettings = true;
     package = config.boot.kernelPackages.nvidiaPackages.stable;
@@ -129,15 +139,20 @@ in
 
   # SERVICES
   services.gnome.gnome-keyring.enable = true;
-  xdg.portal.enable = true;
-  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gnome ];
 
   # HARDWARE
   hardware.keyboard.qmk.enable = true;
 
   # PROGRAMS
-  programs.firefox.enable = true;
+  programs.firefox = {
+    enable = true;
+    preferences = {
+      "widget.use-xdg-desktop-portal.file-picker" = 1;
+    };
+  };
+
   programs.dconf.enable = true;
+
   programs.kdeconnect = {
     enable = true;
     package = pkgs.gnomeExtensions.gsconnect;
@@ -157,7 +172,6 @@ in
     };
   };
 
-
   # ENVIRONMENT
   environment.variables = {
     EDITOR = "nvim";
@@ -169,4 +183,5 @@ in
     extraGroups = [ "wheel" "video" "audio" "networkmanager" ];
     shell = pkgs.zsh;
   };
+
 }
