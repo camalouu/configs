@@ -12,19 +12,13 @@
       "show_edit_predictions": true,
     },
   },
-  "notification_panel": {
-    "button": false,
-    "dock": "left",
-  },
-  "collaboration_panel": {
-    "button": false,
-  },
-  "outline_panel": {
-    "button": false,
-  },
-  "debugger": {
-    "button": false,
-  },
+  "notification_panel": { "button": false },
+  "collaboration_panel": { "button": false },
+  "outline_panel": { "button": false },
+  "debugger": { "button": false },
+  "project_panel": { "button": false },
+  "git_panel": { "button": false },
+  "search": { "button": false },
   "bottom_dock_layout": "contained",
   "show_edit_predictions": false,
   "agent": {
@@ -53,17 +47,14 @@
     "use_smartcase_find": true,
   },
   "scrollbar": { "show": "never" },
-  "features": {
-    "edit_prediction_provider": "zed",
-  },
+  "features": { "edit_prediction_provider": "zed" },
   "remove_trailing_whitespace_on_save": false,
   "format_on_save": "off",
   "autosave": "off",
   "language_servers": ["!typescript-language-server", "!eslint", "..."],
-  "terminal": {
-    "option_as_meta": true,
-  },
+  "terminal": { "option_as_meta": true },
   "tabs": { "activate_on_close": null },
-  // "tab_bar": { "show": false },
+  "tab_bar": { "show": false },
   "agent_ui_font_size": 21,
+  "close_on_file_delete": true,
 }

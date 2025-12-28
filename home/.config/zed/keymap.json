@@ -33,6 +33,8 @@
       "g j": "editor::SelectNext",
       "g k": "editor::Hover",
       "g r": "editor::FindAllReferences",
+      "g q": "pane::CloseOtherItems",
+      "g i": "git::Diff",
       // "space e": "project_panel::ToggleFocus",
     },
   },
