@@ -17,7 +17,7 @@
   {
     "context": "Workspace",
     "bindings": {
-      "-": ["task::Spawn", { "task_name": "yazi_zed" }],
+      // "-": ["task::Spawn", { "task_name": "yazi_zed" }],
       "ctrl-f": ["task::Spawn", { "task_name": "Files" }],
       "ctrl-shift-f": ["task::Spawn", { "task_name": "Rg" }],
     },
@@ -42,7 +42,6 @@
       "g r": "editor::FindAllReferences",
       "g q": "pane::CloseOtherItems",
       "g i": "git::Diff",
-      // "space e": "project_panel::ToggleFocus",
     },
   },
   {
@@ -51,13 +50,6 @@
       "U": "editor::Redo",
     },
   },
-  // {
-  //   "context": "ProjectPanel && not_editing",
-  //   "bindings": {
-  //     "l": "project_panel::OpenPermanent",
-  //     "space e": "project_panel::ToggleFocus",
-  //   },
-  // },
   {
     "context": "vim_mode == visual",
     "bindings": {
@@ -91,6 +83,7 @@
     "bindings": {
       "ctrl-shift-w": null,
       "ctrl-shift-e": null,
+      "ctrl-shift-b": null,
       "ctrl-b": null,
     },
   },
