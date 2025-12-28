@@ -14,7 +14,14 @@
       "ctrl-shift-f": ["task::Spawn", { "task_name": "Rg" }],
     },
   },
-
+  {
+    "context": "Workspace",
+    "bindings": {
+      "-": ["task::Spawn", { "task_name": "yazi_zed" }],
+      "ctrl-f": ["task::Spawn", { "task_name": "Files" }],
+      "ctrl-shift-f": ["task::Spawn", { "task_name": "Rg" }],
+    },
+  },
   {
     "context": "Editor && vim_mode == insert",
     "bindings": {
