@@ -8,6 +8,26 @@ function y() {
   rm -f -- "$tmp"
 }
 
+init_zox() {
+  # Find the git root
+  local git_root=$(git rev-parse --show-toplevel 2>/dev/null)
+  if [[ -n "$git_root" ]]; then
+    export _ZO_DATA_DIR="$git_root/.zoxide"
+  else
+    unset _ZO_DATA_DIR
+  fi
+}
+
+function yazi_zed() {
+    export FZF_DEFAULT_COMMAND='fd --type f --hidden --exclude .git . $(git rev-parse --show-toplevel 2>/dev/null || echo .)'
+    local tmp="$(mktemp -t "yazi-chooser.XXXXX")"
+    yazi "$@" --chooser-file="$tmp"
+    local opened_file="$(cat -- "$tmp" | head -n 1)"
+    zeditor -- "$opened_file"
+    rm -f -- "$tmp"
+    exit
+}
+
 # Zoxide
 eval "$(zoxide init --cmd=cd zsh)"
 

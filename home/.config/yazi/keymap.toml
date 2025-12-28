@@ -34,6 +34,11 @@ run  = "cd /home/viktor/configs"
 desc = "Enter configs repo"
 
 [[mgr.prepend_keymap]]
+on = [ "g", "r" ]
+run = 'shell -- ya emit cd "$(git rev-parse --show-toplevel)"'
+desc = "Enter git root dir"
+
+[[mgr.prepend_keymap]]
 on  = "y"
 run = [
  '''

@@ -7,43 +7,53 @@
 // from the command palette.
 [
   {
+    "context": "Editor && vim_mode == normal",
+    "bindings": {
+      "-": ["task::Spawn", { "task_name": "yazi_zed" }],
+      "ctrl-f": ["task::Spawn", { "task_name": "Files" }],
+      "ctrl-shift-f": ["task::Spawn", { "task_name": "Rg" }],
+    },
+  },
+
+  {
     "context": "Editor && vim_mode == insert",
     "bindings": {
-      "j k": ["workspace::SendKeystrokes", "escape"]
-    }
+      "j k": ["workspace::SendKeystrokes", "escape"],
+    },
   },
   {
     "context": "VimControl && !menu",
     "bindings": {
       // put key-bindings here if you want them to work in normal & visual mode
       "ctrl-j": "terminal_panel::ToggleFocus",
+      "ctrl-i": "workspace::NewTerminal",
       "ctrl-shift-j": "workspace::ToggleRightDock",
       "g h": "vim::StartOfLine",
       "g l": "vim::EndOfLine",
       "g j": "editor::SelectNext",
       "g k": "editor::Hover",
       "g r": "editor::FindAllReferences",
-      "space e": "project_panel::ToggleFocus"
-    }
+      // "space e": "project_panel::ToggleFocus",
+    },
   },
   {
     "context": "vim_mode == normal",
     "bindings": {
-      "U": "editor::Redo"
-    }
+      "U": "editor::Redo",
+    },
   },
-  {
-    "context": "ProjectPanel && not_editing",
-    "bindings": {
-      "l": "project_panel::OpenPermanent",
-      "space e": "project_panel::ToggleFocus"
-    }
-  },
+  // {
+  //   "context": "ProjectPanel && not_editing",
+  //   "bindings": {
+  //     "l": "project_panel::OpenPermanent",
+  //     "space e": "project_panel::ToggleFocus",
+  //   },
+  // },
   {
     "context": "vim_mode == visual",
     "bindings": {
-      "shift-s": ["vim::PushAddSurrounds", {}]
-    }
+      "shift-s": ["vim::PushAddSurrounds", {}],
+    },
   },
   {
     "context": "Terminal",
@@ -53,24 +63,26 @@
       "ctrl-f": ["terminal::SendKeystroke", "ctrl-f"],
       "ctrl-b": ["terminal::SendKeystroke", "ctrl-b"],
       "alt-f": ["terminal::SendKeystroke", "alt-f"],
-      "alt-b": ["terminal::SendKeystroke", "alt-b"]
-    }
+      "alt-b": ["terminal::SendKeystroke", "alt-b"],
+    },
   },
   {
-    "context": "(Editor || ProjectPanel) && not_editing",
+    "context": "(Editor || ProjectPanel || Terminal)",
     "bindings": {
-      "ctrl-shift-j": "workspace::ToggleRightDock"
-    }
+      "ctrl-shift-j": "workspace::ToggleRightDock",
+    },
   },
   {
     "context": "AssistantPanel && not_editing",
     "bindings": {
-      "ctrl-shift-j": "workspace::ToggleRightDock"
-    }
+      "ctrl-shift-j": "workspace::ToggleRightDock",
+    },
   },
   {
     "bindings": {
-      "ctrl-shift-w": null
-    }
-  }
+      "ctrl-shift-w": null,
+      "ctrl-shift-e": null,
+      "ctrl-b": null,
+    },
+  },
 ]

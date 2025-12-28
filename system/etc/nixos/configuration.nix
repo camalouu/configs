@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, pkgs, ... }:
 let
   unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
 in
@@ -22,9 +22,11 @@ in
     # Terminal utilities
     ripgrep
     fd
+    fzf
     alacritty
     lsd
     glow
+    bat
     zoxide
     unstable.yazi
     jq

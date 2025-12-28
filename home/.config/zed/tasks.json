@@ -1,0 +1,37 @@
+// Project tasks configuration. See https://zed.dev/docs/tasks for documentation.
+//
+// Example:
+[
+  {
+    "label": "yazi_zed",
+    "command": "yazi_zed $ZED_FILE",
+    "hide": "always",
+    "allow_concurrent_runs": true,
+    "use_new_terminal": true,
+    "reveal_target": "center",
+  },
+  {
+    "label": "RG",
+    "command": "zeditor \"$(fzf --bind 'start:reload:rg --column --line-number --no-heading --color=always --smart-case \"\"' --bind 'change:reload:rg --column --line-number --no-heading --color=always --smart-case {q} || true' --bind 'enter:become(echo {1}:{2})' --ansi --disabled --delimiter : --preview 'bat -n --color=always --highlight-line {2} {1}' --preview-window '+{2}-/2' --style full --layout reverse)\"",
+    "hide": "always",
+    "allow_concurrent_runs": true,
+    "use_new_terminal": true,
+    "reveal_target": "center",
+  },
+  {
+    "label": "Rg",
+    "command": "zeditor \"$(rg --hidden --column --line-number --no-heading --color=always --smart-case \"\" | fzf --bind 'enter:become(echo {1}:{2})' --ansi --delimiter : --nth {4..} --preview 'bat -n --color=always --highlight-line {2} {1}' --preview-window '+{2}-/2' --style full --layout reverse)\"",
+    "hide": "always",
+    "allow_concurrent_runs": true,
+    "use_new_terminal": true,
+    "reveal_target": "center",
+  },
+  {
+    "label": "Files",
+    "command": "zeditor \"$(rg --hidden --files | fzf --preview 'bat -n --color=always {}' --style full --layout reverse)\"",
+    "hide": "always",
+    "allow_concurrent_runs": true,
+    "use_new_terminal": true,
+    "reveal_target": "center",
+  },
+]

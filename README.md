@@ -13,6 +13,7 @@ Notes
 - `--adopt` moves existing files into the package—backup before using.
 - Use `--simulate` to avoid surprises.
 - Package layout: put files under `home/` to map into `~`, `system/` for /etc-style targets.
+- Run `ya pkg install` for yazi to function
 
 Short TODO
 - Add per-package README templates.
