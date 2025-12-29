@@ -64,6 +64,20 @@ in
     nil
   ];
 
+  environment.gnome.excludePackages = with pkgs; [
+    totem
+    epiphany
+    showtime
+    simple-scan
+    yelp
+    gnome-text-editor
+    gnome-console
+    gnome-contacts
+    gnome-maps
+    gnome-connections
+    gnome-tour
+  ];
+
   # SYSTEM
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -114,6 +128,13 @@ in
     };
     desktopManager.gnome.enable = true;
     xkb.options = "ctrl:nocaps,compose:ralt";
+    excludePackages = [ pkgs.xterm ];
+  };
+
+  qt = {
+    enable = true;
+    platformTheme = "gnome";
+    style = "adwaita-dark";
   };
 
   # NVIDIA
@@ -203,6 +224,11 @@ in
     extraGroups = [ "wheel" "video" "audio" "networkmanager" ];
     shell = pkgs.zsh;
   };
+
+  services.displayManager.autoLogin.enable = true;
+  services.displayManager.autoLogin.user = "viktor";
+
+  nix.settings.trusted-users = [ "root" "viktor" ];
 
     # systemd.services.nvidia-force-performance = {
     #   description = "Lock Nvidia GPU clocks to high performance to fix Wayland stutter";
