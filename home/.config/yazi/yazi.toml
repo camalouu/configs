@@ -4,7 +4,7 @@ show_hidden = true
 
 [opener]
 play = [
-	{ run = 'vlc "$@"', orphan = true, for = "unix" },
+	{ run = 'xdg-open "$@"', orphan = true, for = "unix" },
 ]
 edit = [
 	{ run = '$EDITOR "$@"', block = true, for = "unix" },

@@ -36,7 +36,7 @@
   },
   "vim_mode": true,
   "ui_font_size": 21,
-  "buffer_font_size": 24,
+  "buffer_font_size": 21,
   "theme": {
     "mode": "system",
     "light": "Catbox",

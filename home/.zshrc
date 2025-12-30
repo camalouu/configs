@@ -8,15 +8,15 @@ function y() {
   rm -f -- "$tmp"
 }
 
-init_zox() {
-  # Find the git root
-  local git_root=$(git rev-parse --show-toplevel 2>/dev/null)
-  if [[ -n "$git_root" ]]; then
-    export _ZO_DATA_DIR="$git_root/.zoxide"
-  else
-    unset _ZO_DATA_DIR
-  fi
-}
+# init_zox() {
+#   # Find the git root
+#   local git_root=$(git rev-parse --show-toplevel 2>/dev/null)
+#   if [[ -n "$git_root" ]]; then
+#     export _ZO_DATA_DIR="$git_root/.zoxide"
+#   else
+#     unset _ZO_DATA_DIR
+#   fi
+# }
 
 function yazi_zed() {
     export FZF_DEFAULT_COMMAND='fd --type f --hidden --exclude .git . $(git rev-parse --show-toplevel 2>/dev/null || echo .)'

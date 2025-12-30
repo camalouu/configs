@@ -16,7 +16,6 @@ in
     gh
     git
     lazygit
-    neovim
     unstable.zed-editor
     
     # Terminal utilities
@@ -40,6 +39,9 @@ in
     
     # Media
     mpv
+    clapper
+    amberol
+    gaphor
     
     # GNOME
     gnome-tweaks
@@ -47,6 +49,12 @@ in
     gnomeExtensions.run-or-raise
     gnomeExtensions.clipboard-indicator
     gnomeExtensions.vitals
+    gnomeExtensions.blur-my-shell
+    mission-center
+    # ulauncher
+    mailspring
+    gitg
+    meld
 
     xdg-desktop-portal-termfilechooser
     
@@ -62,10 +70,17 @@ in
     # nix things, lsp
     nixd
     nil
+
+    # hardware design tools
+    coreboot-toolchain.riscv
+    # pkgs.pkgsCross.riscv32.buildPackages.gcc
+    verilator
+    elfutils 
   ];
 
   environment.gnome.excludePackages = with pkgs; [
     totem
+    decibels
     epiphany
     showtime
     simple-scan
@@ -74,8 +89,10 @@ in
     gnome-console
     gnome-contacts
     gnome-maps
+    gnome-music
     gnome-connections
     gnome-tour
+    gnome-system-monitor
   ];
 
   # SYSTEM
@@ -102,7 +119,7 @@ in
   nix.gc = {
     automatic = true;
     dates = "weekly";
-    options = "--delete-older-than 30d";
+    options = "--delete-older-than 10d";
   };
 
   # CONSOLE
@@ -187,6 +204,13 @@ in
       "widget.use-xdg-desktop-portal.file-picker" = 1;
     };
   };
+  
+  programs.neovim = {
+    enable = true;
+    defaultEditor = true;
+    viAlias = true;
+    vimAlias = true;
+  };
 
   programs.dconf.enable = true;
 
@@ -194,10 +218,12 @@ in
     enable = true;
     package = pkgs.gnomeExtensions.gsconnect;
   };
+
   programs.nix-ld = {
     enable = true;
     libraries = [ pkgs.zlib pkgs.openssl ];
   };
+
   programs.zsh = {
     enable = true;
     enableCompletion = true;
@@ -214,19 +240,24 @@ in
   };
 
   # ENVIRONMENT
-  environment.variables = {
-    EDITOR = "nvim";
+  # environment.variables = {
+  #   EDITOR = "nvim";
+  # };
+
+  virtualisation.docker = {
+    enable = true;
   };
 
   # USER
   users.users.viktor = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "video" "audio" "networkmanager" ];
+    extraGroups = [ "wheel" "video" "audio" "networkmanager" "docker" ];
+    # extraGroups = [ "wheel" "video" "audio" "networkmanager" ];
     shell = pkgs.zsh;
   };
 
-  services.displayManager.autoLogin.enable = true;
-  services.displayManager.autoLogin.user = "viktor";
+  # services.displayManager.autoLogin.enable = true;
+  # services.displayManager.autoLogin.user = "viktor";
 
   nix.settings.trusted-users = [ "root" "viktor" ];
 
@@ -269,4 +300,35 @@ in
     #     # 3. (Optional) Force the browser to use Wayland directly if you haven't already
     #     # MOZ_ENABLE_WAYLAND = "1"; 
     #   };
+
+    # environment.etc."/run/current-system/sw/share/applications/Mailspring.desktop:Name=Mailspring".text = ''
+    #     Name=Mailspring
+    #     Comment=The best email app for people and teams at work
+    #     GenericName=Mail Client
+    #     Exec=env GDK_DPI_SCALE=2 /nix/store/w8fmlsmbjrcq86yw28a3civwmvvcj02b-mailspring-1.15.1/bin/mailspring %U
+    #     Icon=mailspring
+    #     Type=Application
+    #     StartupNotify=true
+    #     StartupWMClass=Mailspring
+    #     Categories=GNOME;GTK;Network;Email;
+    #     Keywords=email;internet;
+    #     MimeType=x-scheme-handler/mailto;x-scheme-handler/mailspring;
+    #     Actions=NewMessage
+    # '';
+
+    systemd.services.immich = {
+      description = "Immich Docker Compose";
+      after = [ "docker.service" ];
+      requires = [ "docker.service" ];
+      wantedBy = [ "multi-user.target" ];
+
+      serviceConfig = {
+        Type = "oneshot";
+        RemainAfterExit = "yes";
+        WorkingDirectory = "/mnt/ssd/immich-app";
+        ExecStart = "${pkgs.docker}/bin/docker compose up -d";
+        ExecStop = "${pkgs.docker}/bin/docker compose down";
+        TimeoutStartSec = 0;
+      };
+    };
 }
