@@ -71,6 +71,12 @@ keymap('n', 'g/', 'gcc', { noremap = false })
 keymap('v', 'g/', 'gc', { noremap = false })
 keymap('n', 'vv', 'V', opts)
 
+keymap('n', '<C-l>', 'V', opts)
+keymap('v', '<C-l>', 'j', opts)
+
+keymap('n', '<C-_>', 'gcc', { noremap = false })
+keymap('v', '<C-_>', 'gc', { noremap = false })
+
 -- Clipboard configuration with silent fallback
 local function has_command(cmd)
   return vim.fn.executable(cmd) == 1
