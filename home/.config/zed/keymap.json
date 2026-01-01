@@ -9,7 +9,7 @@
   {
     "context": "Editor && vim_mode == normal",
     "bindings": {
-      "-": ["task::Spawn", { "task_name": "yazi_zed" }],
+      // "-": ["task::Spawn", { "task_name": "yazi_zed" }],
       "ctrl-f": ["task::Spawn", { "task_name": "Files" }],
       "ctrl-shift-f": ["task::Spawn", { "task_name": "Rg" }],
     },
@@ -33,7 +33,6 @@
     "bindings": {
       // put key-bindings here if you want them to work in normal & visual mode
       "ctrl-j": "terminal_panel::ToggleFocus",
-      "ctrl-i": "workspace::NewTerminal",
       "ctrl-shift-j": "workspace::ToggleRightDock",
       "g h": "vim::StartOfLine",
       "g l": "vim::EndOfLine",
@@ -42,6 +41,8 @@
       "g r": "editor::FindAllReferences",
       "g q": "pane::CloseOtherItems",
       "g i": "git::Diff",
+      "g /": "editor::ToggleComments",
+      "space e": ["task::Spawn", { "task_name": "yazi_zed" }],
     },
   },
   {
