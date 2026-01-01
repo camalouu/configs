@@ -29,6 +29,11 @@ require('packer').startup(function(use)
       require('nvim-autopairs').setup {}
     end
   }
+  use {
+    'nvim-telescope/telescope.nvim',
+    tag = '0.1.8',
+    requires = { {'nvim-lua/plenary.nvim'} }
+  }
   
   if packer_bootstrap then
     require('packer').sync()
@@ -76,6 +81,27 @@ keymap('v', '<C-l>', 'j', opts)
 
 keymap('n', '<C-_>', 'gcc', { noremap = false })
 keymap('v', '<C-_>', 'gc', { noremap = false })
+
+-- Telescope keymaps
+local telescope = require('telescope.builtin')
+keymap('n', '<leader>rg', '', {
+  noremap = true,
+  silent = true,
+  callback = function()
+    telescope.live_grep({
+      additional_args = function() return {"--hidden"} end
+    })
+  end
+})
+keymap('n', '<C-f>', '', {
+  noremap = true,
+  silent = true,
+  callback = function()
+    telescope.find_files({
+      hidden = true
+    })
+  end
+})
 
 -- Clipboard configuration with silent fallback
 local function has_command(cmd)
