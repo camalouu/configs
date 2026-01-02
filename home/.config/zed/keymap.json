@@ -33,6 +33,8 @@
     "bindings": {
       // put key-bindings here if you want them to work in normal & visual mode
       "ctrl-j": "terminal_panel::ToggleFocus",
+      "s": "vim::PushSneak",
+      "S": "vim::PushSneakBackward",
       "ctrl-shift-j": "workspace::ToggleRightDock",
       "g h": "vim::StartOfLine",
       "g l": "vim::EndOfLine",
@@ -41,6 +43,7 @@
       "g r": "editor::FindAllReferences",
       "g q": "pane::CloseOtherItems",
       "g i": "git::Diff",
+      "g o": ["task::Spawn", { "task_name": "LazyGit" }],
       "g /": "editor::ToggleComments",
       "space e": ["task::Spawn", { "task_name": "yazi_zed" }],
     },
