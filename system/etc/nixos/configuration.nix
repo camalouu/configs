@@ -16,6 +16,9 @@ in
     gh
     git
     lazygit
+    lazydocker
+    unstable.github-copilot-cli
+    unstable.lazyjournal
     unstable.zed-editor
     
     # Terminal utilities
@@ -23,6 +26,7 @@ in
     fd
     fzf
     alacritty
+    zellij
     lsd
     glow
     bat
@@ -33,6 +37,7 @@ in
     bottom
     xclip
     stow
+    azure-cli
     
     # Browsers
     chromium
@@ -51,7 +56,6 @@ in
     gnomeExtensions.vitals
     gnomeExtensions.blur-my-shell
     mission-center
-    # ulauncher
     mailspring
     gitg
     meld
@@ -194,6 +198,8 @@ in
   #
   # };
 
+  services.tailscale.enable = true;
+
   # HARDWARE
   hardware.keyboard.qmk.enable = true;
 
@@ -235,6 +241,7 @@ in
       lg = "lazygit";
       gst = "git status";
       s = "sudo nixos-rebuild switch";
+      sup = "sudo nixos-rebuild switch --upgrade";
       b = "sudo nixos-rebuild build";
     };
   };
