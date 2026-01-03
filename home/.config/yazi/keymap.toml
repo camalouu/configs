@@ -39,6 +39,16 @@ run = 'shell -- ya emit cd "$(git rev-parse --show-toplevel)"'
 desc = "Enter git root dir"
 
 [[mgr.prepend_keymap]]
+on = [ "z" ]
+run =  "plugin zoxide"
+desc = "use zoxide"
+
+[[mgr.prepend_keymap]]
+on = [ "Z" ]
+run =  "plugin fzf"
+desc = "use fzf"
+
+[[mgr.prepend_keymap]]
 on  = "y"
 run = [
  '''
@@ -81,7 +91,7 @@ for file in "$@"; do
       less "$tmp_file"
       rm -f "$tmp_file"
       ;;
-    *.sh) /bin/zsh "$file"; echo ""; read -p "Press enter to continue..."; ;;
+    *.sh) /run/current-system/sw/bin/zsh "$file"; echo ""; read -p "Press enter to continue..."; ;;
     *.py) python3 "$file"; echo -e "Press enter to continue..."; read -r;;
     *.js) node "$file"; echo -e "Press enter to continue..."; read -r;;
   esac
