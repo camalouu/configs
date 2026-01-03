@@ -58,6 +58,7 @@
     "context": "vim_mode == visual",
     "bindings": {
       "shift-s": ["vim::PushAddSurrounds", {}],
+      "/": "editor::ToggleComments",
     },
   },
   {

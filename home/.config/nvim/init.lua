@@ -81,6 +81,7 @@ keymap('v', '<C-l>', 'j', opts)
 
 keymap('n', '<C-_>', 'gcc', { noremap = false })
 keymap('v', '<C-_>', 'gc', { noremap = false })
+keymap('v', '/', 'gcgv', { noremap = false })
 
 -- Telescope keymaps
 local telescope = require('telescope.builtin')
