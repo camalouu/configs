@@ -63,7 +63,7 @@ in
     xdg-desktop-portal-termfilechooser
     
     # Applications
-    dialect
+    unstable.dialect
     speedcrunch
     
     # Keyboard tools
@@ -114,6 +114,15 @@ in
   };
   
   time.timeZone = "Europe/Berlin";
+
+  i18n.defaultLocale = "en_US.UTF-8";
+
+  i18n.extraLocaleSettings = {
+    LC_TIME = "de_DE.UTF-8";
+    LC_MONETARY = "de_DE.UTF-8";
+    LC_MEASUREMENT = "de_DE.UTF-8";
+    LC_PAPER = "de_DE.UTF-8";
+  };
   
   system.stateVersion = "25.05";
 
@@ -337,5 +346,19 @@ in
         ExecStop = "${pkgs.docker}/bin/docker compose down";
         TimeoutStartSec = 0;
       };
+    };
+
+    systemd.services.nvidia-clocks = {
+      description = "Set NVIDIA GPU clock speed and persistence";
+      wantedBy = [ "multi-user.target" ];
+      after = [ "systemd-modules-load.service" ];
+      serviceConfig = {
+        Type = "oneshot";
+        ExecStart = "${pkgs.writeShellScript "nvidia-clocks" ''
+          nvidia-smi -pm 1
+          nvidia-smi -lgc 1410,2100
+        ''}";
+      };
+      path = [ pkgs.linuxPackages.nvidia_x11 ];
     };
 }
