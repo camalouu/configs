@@ -60,6 +60,7 @@ vim.g['sneak#use_ic_scs'] = 1
 local keymap = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 
+
 keymap('i', 'jk', '<Esc>', opts)
 keymap('i', '<C-BS>', '<C-w>', { noremap = true })
 keymap('i', '<C-Del>', '<C-O>dw', opts)
@@ -75,13 +76,13 @@ keymap('v', '>', '>gv', opts)
 keymap('n', 'g/', 'gcc', { noremap = false })
 keymap('v', 'g/', 'gc', { noremap = false })
 keymap('n', 'vv', 'V', opts)
-
 keymap('n', '<C-l>', 'V', opts)
 keymap('v', '<C-l>', 'j', opts)
-
 keymap('n', '<C-_>', 'gcc', { noremap = false })
 keymap('v', '<C-_>', 'gc', { noremap = false })
 keymap('v', '/', 'gcgv', { noremap = false })
+keymap('n', 'gu', '/\\v[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}<CR>:noh<CR>v35l', opts)
+keymap('v', 'u', '<Esc>/\\v[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}<CR>:noh<CR>v35l', opts)
 
 -- Telescope keymaps
 local telescope = require('telescope.builtin')
