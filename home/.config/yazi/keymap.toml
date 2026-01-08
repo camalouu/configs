@@ -100,6 +100,7 @@ done
 ]
 
 [[mgr.prepend_keymap]]
-on   = [ "g", "C" ]
-run  = "plugin vcs-files"
-desc = "Show Git file changes"
+on   = [ "g", "o" ]
+run  = "plugin lazygit"
+desc = "run lazygit"
+

@@ -13,6 +13,11 @@ use = "yazi-rs/plugins:no-status"
 rev = "7ca66b4"
 hash = "3e023d31f29201efdac2a6ae35fedb78"
 
+[[plugin.deps]]
+use = "Lil-Dank/lazygit"
+rev = "0e56060"
+hash = "ab2e66065a94cca4886b303518e44bd8"
+
 [[flavor.deps]]
 use = "kmlupreti/ayu-dark"
 rev = "648a178"
