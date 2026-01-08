@@ -11,6 +11,7 @@ in
     wget
     curl
     hurl
+    xh
     
     # Development
     gh
@@ -18,8 +19,23 @@ in
     lazygit
     lazydocker
     unstable.github-copilot-cli
-    unstable.lazyjournal
     unstable.zed-editor
+    jdk
+    nodejs_24
+    python3
+
+    # c/c++
+    gcc
+    gdb
+    gnumake
+    cmake
+
+    # rust
+    rustc
+    cargo
+    rustfmt
+    rust-analyzer
+    clippy
     
     # Terminal utilities
     ripgrep
@@ -241,7 +257,7 @@ in
 
   programs.zsh = {
     enable = true;
-    enableCompletion = true;
+    enableCompletion = false;
     autosuggestions.enable = true;
     syntaxHighlighting.enable = true;
     shellAliases = {
