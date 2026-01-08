@@ -52,3 +52,6 @@ bindkey '\e[1;5C' forward-word
 
 # Delete key
 bindkey '^[[3~' delete-char
+
+# Blinking line cursor
+precmd() { echo -ne "[5 q" }
