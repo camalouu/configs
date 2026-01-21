@@ -53,6 +53,9 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.wrap = false
 
+vim.opt.foldmethod = "indent"
+vim.opt.foldlevel = 99
+
 -- Sneak
 vim.g['sneak#use_ic_scs'] = 1
 
@@ -83,6 +86,7 @@ keymap('v', '<C-_>', 'gc', { noremap = false })
 keymap('v', '/', 'gcgv', { noremap = false })
 keymap('n', 'gu', '/\\v[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}<CR>:noh<CR>v35l', opts)
 keymap('v', 'u', '<Esc>/\\v[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}<CR>:noh<CR>v35l', opts)
+keymap('n', '<leader>jq', ':%!jq .<CR>', opts)
 
 -- Telescope keymaps
 local telescope = require('telescope.builtin')

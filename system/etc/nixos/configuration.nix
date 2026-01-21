@@ -63,6 +63,7 @@ in
     clapper
     amberol
     gaphor
+    typst
     
     # GNOME
     gnome-tweaks
@@ -72,9 +73,10 @@ in
     gnomeExtensions.vitals
     gnomeExtensions.blur-my-shell
     mission-center
-    mailspring
     gitg
     meld
+    apostrophe
+
 
     xdg-desktop-portal-termfilechooser
     
