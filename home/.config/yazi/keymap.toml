@@ -44,7 +44,7 @@ run =  "plugin zoxide"
 desc = "use zoxide"
 
 [[mgr.prepend_keymap]]
-on = [ "Z" ]
+on = [ "/" ]
 run =  "plugin fzf"
 desc = "use fzf"
 

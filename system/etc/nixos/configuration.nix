@@ -3,10 +3,20 @@ let
   unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
 in
 {
-  imports = [ ./hardware-configuration.nix ];
+  imports = [
+      ./hardware-configuration.nix
+      <home-manager/nixos> 
+  ];
 
   # PACKAGES
   environment.systemPackages = with pkgs; [
+    home-manager
+
+    openssl
+
+    sqlite
+
+    unstable.telegram-desktop
     # Network tools
     wget
     curl
@@ -21,8 +31,11 @@ in
     unstable.github-copilot-cli
     unstable.zed-editor
     jdk
+    # python3
+    (python3.withPackages (ps: with ps; [ matplotlib pandas ]))
+
+    #node
     nodejs_24
-    python3
 
     # c/c++
     gcc
@@ -30,7 +43,8 @@ in
     gnumake
     cmake
 
-    # rust
+    # rust/go
+    go
     rustc
     cargo
     rustfmt
@@ -54,6 +68,8 @@ in
     xclip
     stow
     azure-cli
+    mosquitto
+    sqlite
     
     # Browsers
     chromium
@@ -64,6 +80,7 @@ in
     amberol
     gaphor
     typst
+    thunderbird
     
     # GNOME
     gnome-tweaks
@@ -94,6 +111,7 @@ in
     nil
 
     # hardware design tools
+    spike
     coreboot-toolchain.riscv
     # pkgs.pkgsCross.riscv32.buildPackages.gcc
     verilator
@@ -102,6 +120,7 @@ in
 
   environment.gnome.excludePackages = with pkgs; [
     totem
+    geary
     decibels
     epiphany
     showtime
@@ -145,7 +164,6 @@ in
   system.stateVersion = "25.05";
 
   # NIX SETTINGS
-  nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = ["nix-command" "flakes"];
   nix.gc = {
     automatic = true;
@@ -270,6 +288,7 @@ in
       s = "sudo nixos-rebuild switch";
       sup = "sudo nixos-rebuild switch --upgrade";
       b = "sudo nixos-rebuild build";
+      ns = "nix-shell";
     };
   };
 
@@ -335,21 +354,6 @@ in
     #     # MOZ_ENABLE_WAYLAND = "1"; 
     #   };
 
-    # environment.etc."/run/current-system/sw/share/applications/Mailspring.desktop:Name=Mailspring".text = ''
-    #     Name=Mailspring
-    #     Comment=The best email app for people and teams at work
-    #     GenericName=Mail Client
-    #     Exec=env GDK_DPI_SCALE=2 /nix/store/w8fmlsmbjrcq86yw28a3civwmvvcj02b-mailspring-1.15.1/bin/mailspring %U
-    #     Icon=mailspring
-    #     Type=Application
-    #     StartupNotify=true
-    #     StartupWMClass=Mailspring
-    #     Categories=GNOME;GTK;Network;Email;
-    #     Keywords=email;internet;
-    #     MimeType=x-scheme-handler/mailto;x-scheme-handler/mailspring;
-    #     Actions=NewMessage
-    # '';
-
     systemd.services.immich = {
       description = "Immich Docker Compose";
       after = [ "docker.service" ];
@@ -378,5 +382,12 @@ in
         ''}";
       };
       path = [ pkgs.linuxPackages.nvidia_x11 ];
+    };
+
+    nixpkgs.config.allowUnfree = true;
+    home-manager.useGlobalPkgs = true;
+    home-manager.users.viktor = { pkgs, ... }: {
+      home.stateVersion = "25.05";
+      home.packages = with pkgs; [ spotify ];
     };
 }
