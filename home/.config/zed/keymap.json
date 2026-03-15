@@ -35,7 +35,7 @@
       "ctrl-j": "terminal_panel::ToggleFocus",
       "s": "vim::PushSneak",
       "S": "vim::PushSneakBackward",
-      "ctrl-shift-j": "workspace::ToggleRightDock",
+      // "ctrl-shift-j": "workspace::ToggleRightDock",
       "g h": "vim::StartOfLine",
       "g l": "vim::EndOfLine",
       "g j": "editor::SelectNext",
@@ -72,24 +72,25 @@
       "alt-b": ["terminal::SendKeystroke", "alt-b"],
     },
   },
-  {
-    "context": "(Editor || ProjectPanel || Terminal)",
-    "bindings": {
-      "ctrl-shift-j": "workspace::ToggleRightDock",
-    },
-  },
-  {
-    "context": "AssistantPanel && not_editing",
-    "bindings": {
-      "ctrl-shift-j": "workspace::ToggleRightDock",
-    },
-  },
+  // {
+  //   "context": "(Editor || ProjectPanel || Terminal)",
+  //   "bindings": {
+  //     "ctrl-shift-j": "workspace::ToggleRightDock",
+  //   },
+  // },
+  // {
+  //   "context": "AssistantPanel && not_editing",
+  //   "bindings": {
+  //     "ctrl-shift-j": "workspace::ToggleRightDock",
+  //   },
+  // },
   {
     "bindings": {
       "ctrl-shift-w": null,
       "ctrl-shift-e": null,
       "ctrl-shift-b": null,
-      // "ctrl-shift-c": null,
+      "ctrl-shift-c": null,
+      "ctrl-shift-j": null,
       "ctrl-b": null,
     },
   },

@@ -14,7 +14,7 @@ in
 
     openssl
 
-    sqlite
+    aria2
 
     unstable.telegram-desktop
     # Network tools
@@ -22,6 +22,9 @@ in
     curl
     hurl
     xh
+    bandwhich
+    termshark
+    rustscan
     
     # Development
     gh
@@ -31,6 +34,9 @@ in
     unstable.github-copilot-cli
     unstable.zed-editor
     jdk
+    maven
+    helix
+    redpanda
     # python3
     (python3.withPackages (ps: with ps; [ matplotlib pandas ]))
 
@@ -81,6 +87,7 @@ in
     gaphor
     typst
     thunderbird
+    vlc
     
     # GNOME
     gnome-tweaks
@@ -102,6 +109,7 @@ in
     speedcrunch
     
     # Keyboard tools
+    # unstable.kanata
     qmk
     dos2unix
     via
@@ -141,7 +149,6 @@ in
   boot.loader.efi.canTouchEfiVariables = true;
 
 
-  boot.blacklistedKernelModules = [ "nouveau" ];
   
   networking.hostName = "camalouu";
   networking.networkmanager.enable = true;
@@ -183,7 +190,7 @@ in
     nerd-fonts.fira-code
     nerd-fonts.droid-sans-mono
   ];
-
+  services.vnstat.enable = true;
   # DISPLAY SERVER & DESKTOP
   services.xserver = {
     enable = true;
@@ -193,7 +200,7 @@ in
       wayland = true;
     };
     desktopManager.gnome.enable = true;
-    xkb.options = "ctrl:nocaps,compose:ralt";
+    # xkb.options = "ctrl:nocaps,compose:ralt";
     excludePackages = [ pkgs.xterm ];
   };
 
@@ -203,11 +210,14 @@ in
     style = "adwaita-dark";
   };
 
+  boot.blacklistedKernelModules = [ "nouveau" ];
+
   # NVIDIA
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
   };
+
   hardware.nvidia = {
     modesetting.enable = true;
     open = false;
@@ -289,6 +299,7 @@ in
       sup = "sudo nixos-rebuild switch --upgrade";
       b = "sudo nixos-rebuild build";
       ns = "nix-shell";
+      z = "zellij";
     };
   };
 
@@ -304,55 +315,12 @@ in
   # USER
   users.users.viktor = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "video" "audio" "networkmanager" "docker" ];
+    extraGroups = [ "wheel" "video" "audio" "networkmanager" "docker"  "input" "uinput" ];
     # extraGroups = [ "wheel" "video" "audio" "networkmanager" ];
     shell = pkgs.zsh;
   };
 
-  # services.displayManager.autoLogin.enable = true;
-  # services.displayManager.autoLogin.user = "viktor";
-
   nix.settings.trusted-users = [ "root" "viktor" ];
-
-    # systemd.services.nvidia-force-performance = {
-    #   description = "Lock Nvidia GPU clocks to high performance to fix Wayland stutter";
-    #   # Ensure this runs after the graphical session is ready
-    #   after = [ "display-manager.service" ];
-    #   wantedBy = [ "multi-user.target" ];
-    #
-    #   serviceConfig = {
-    #     Type = "oneshot";
-    #     # We use a script to run multiple nvidia-smi commands in sequence
-    #     # 1. Enable Persistence Mode (-pm 1) to prevent the driver from unloading
-    #     # 2. Lock Graphics Clocks (-lgc) to Min: 1500, Max: 2100
-    #     ExecStart = pkgs.writeShellScript "nvidia-lock" ''
-    #       ${config.hardware.nvidia.package.bin}/bin/nvidia-smi -pm 1
-    #       ${config.hardware.nvidia.package.bin}/bin/nvidia-smi -lgc 1500,2100
-    #     '';
-    #     # Optional: Reset clocks when the service is stopped
-    #     ExecStop = "${config.hardware.nvidia.package.bin}/bin/nvidia-smi -rgc";
-    #     RemainAfterExit = true;
-    #   };
-    # };
-
-      # boot.kernelParams = [ 
-      #  "nvidia.NVreg_EnableGpuFirmware=0"
-      #  "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
-      #  "nvidia.NVreg_DynamicPowerManagement=0x02" 
-      # ];
-
-    # environment.sessionVariables = {
-    #     # 1. Force Mutter (Gnome) to not aggressively optimize render times for offloaded screens
-    #     # This helps prevents the "stutter" on secondary monitors driven by the dGPU
-    #     CLUTTER_PAINT = "disable-dynamic-max-render-time";
-    #
-    #     # 2. Disable G-Sync/VRR specifically for the Nvidia driver
-    #     # This prevents the dGPU from trying to sync to a variable rate that the Intel iGPU can't pass through
-    #     __GL_GSYNC_ALLOWED = "0";
-    #
-    #     # 3. (Optional) Force the browser to use Wayland directly if you haven't already
-    #     # MOZ_ENABLE_WAYLAND = "1"; 
-    #   };
 
     systemd.services.immich = {
       description = "Immich Docker Compose";
@@ -388,6 +356,62 @@ in
     home-manager.useGlobalPkgs = true;
     home-manager.users.viktor = { pkgs, ... }: {
       home.stateVersion = "25.05";
-      home.packages = with pkgs; [ spotify ];
+      # home.packages = with pkgs; [ spotify ];
     };
+
+    services.kanata = {
+          enable = true;
+          keyboards = {
+            default = {
+              
+              devices = [
+                "/dev/input/by-path/platform-i8042-serio-0-event-kbd"
+              ];
+
+              extraDefCfg = ''
+                process-unmapped-keys yes
+                delegate-to-first-layer yes
+              '';
+              
+              config = ''
+                (defsrc
+                  caps  a s d f   h j k l scln
+                  n m , .
+                  lmet lalt spc
+                )
+
+                (defalias
+                  ;; Home Row Mods (Left Hand: Super, Alt, Shift, Ctrl)
+                  a_mod    (tap-hold-release 200 150 a lmet)
+                  s_mod    (tap-hold-release 200 150 s lalt)
+                  d_mod    (tap-hold-release 200 150 d lsft) 
+                  f_mod    (tap-hold-release 200 150 f lctl)
+                  
+                  ;; Home Row Mods (Right Hand: Ctrl, Shift, Alt, Super)
+                  j_mod    (tap-hold-release 200 150 j rctl)
+                  k_mod    (tap-hold-release 200 150 k rsft) 
+                  l_mod    (tap-hold-release 200 150 l lalt)
+                  scln_mod (tap-hold-release 200 150 scln lmet)
+                  
+                  ;; Spacebar Mod: Tap for Space, Hold for 'nav' layer
+                  spc_mod  (tap-hold-release 200 150 spc (layer-toggle nav))
+                )
+
+                (deflayer base
+                  esc   _ _ @d_mod @f_mod   _ @j_mod @k_mod _ _
+                  n m , .
+                  lalt lmet @spc_mod
+                )
+
+                ;; The Navigation Layer (Active only while holding Space)
+                (deflayer nav
+                  _     _ _ _ _   left down up rght _
+                  home pgdn pgup end
+                  _ _ _
+                )
+              '';
+            };
+          };
+        };
+  hardware.uinput.enable = true;
 }
