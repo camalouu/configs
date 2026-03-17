@@ -15,6 +15,7 @@ in
     openssl
 
     aria2
+    unstable.yt-dlp
 
     unstable.telegram-desktop
     # Network tools
@@ -39,6 +40,7 @@ in
     redpanda
     # python3
     (python3.withPackages (ps: with ps; [ matplotlib pandas ]))
+    amp
 
     #node
     nodejs_24
@@ -242,6 +244,13 @@ in
   # SERVICES
   services.gnome.gnome-keyring.enable = true;
 
+  systemd.targets.sleep.enable = false;
+  systemd.targets.suspend.enable = false;
+  systemd.targets.hibernate.enable = false;
+  systemd.targets.hybrid-sleep.enable = false;
+
+  services.logind.lidSwitch = "ignore";
+
   # xdg.portal = {
   #   enable = true;
   #
@@ -360,58 +369,58 @@ in
     };
 
     services.kanata = {
-          enable = true;
-          keyboards = {
-            default = {
-              
-              devices = [
-                "/dev/input/by-path/platform-i8042-serio-0-event-kbd"
-              ];
+      enable = true;
+      keyboards = {
+        default = {
+          devices = [
+            "/dev/input/by-path/platform-i8042-serio-0-event-kbd"
+          ];
+          extraDefCfg = ''
+            process-unmapped-keys yes
+            delegate-to-first-layer yes
+          '';
+          config = ''
+            (defsrc
+              caps  a s d f   h j k l scln
+              n m , .
+              lmet lalt spc
+              u i
+              [ ]
+            )
+            (defalias
+              ;; Home Row Mods (Left Hand: Super, Alt, Shift, Ctrl)
+              a_mod    (tap-hold-release 200 150 a lmet)
+              s_mod    (tap-hold-release 200 150 s lalt)
+              d_mod    (tap-hold-release 300 250 d lsft)
+              f_mod    (tap-hold-release 300 250 f lctl)
 
-              extraDefCfg = ''
-                process-unmapped-keys yes
-                delegate-to-first-layer yes
-              '';
-              
-              config = ''
-                (defsrc
-                  caps  a s d f   h j k l scln
-                  n m , .
-                  lmet lalt spc
-                )
+              ;; Home Row Mods (Right Hand: Ctrl, Shift, Alt, Super)
+              j_mod    (tap-hold-release 300 250 j rctl)
+              k_mod    (tap-hold-release 300 250 k rsft)
+              l_mod    (tap-hold-release 200 150 l lalt)
+              scln_mod (tap-hold-release 200 150 scln lmet)
 
-                (defalias
-                  ;; Home Row Mods (Left Hand: Super, Alt, Shift, Ctrl)
-                  a_mod    (tap-hold-release 200 150 a lmet)
-                  s_mod    (tap-hold-release 200 150 s lalt)
-                  d_mod    (tap-hold-release 200 150 d lsft) 
-                  f_mod    (tap-hold-release 200 150 f lctl)
-                  
-                  ;; Home Row Mods (Right Hand: Ctrl, Shift, Alt, Super)
-                  j_mod    (tap-hold-release 200 150 j rctl)
-                  k_mod    (tap-hold-release 200 150 k rsft) 
-                  l_mod    (tap-hold-release 200 150 l lalt)
-                  scln_mod (tap-hold-release 200 150 scln lmet)
-                  
-                  ;; Spacebar Mod: Tap for Space, Hold for 'nav' layer
-                  spc_mod  (tap-hold-release 200 150 spc (layer-toggle nav))
-                )
-
-                (deflayer base
-                  esc   _ _ @d_mod @f_mod   _ @j_mod @k_mod _ _
-                  n m , .
-                  lalt lmet @spc_mod
-                )
-
-                ;; The Navigation Layer (Active only while holding Space)
-                (deflayer nav
-                  _     _ _ _ _   left down up rght _
-                  home pgdn pgup end
-                  _ _ _
-                )
-              '';
-            };
-          };
+              ;; Spacebar Mod: Tap for Space, Hold for 'nav' layer
+              spc_mod  (tap-hold-release 200 150 spc (layer-toggle nav))
+            )
+            (deflayer base
+              esc   _ _ @d_mod @f_mod   _ @j_mod @k_mod _ _
+              n m , .
+              lalt lmet @spc_mod
+              u i
+              [ ]
+            )
+            ;; The Navigation Layer (Active only while holding Space)
+            (deflayer nav
+              _     _ _ _ _   left down up rght _
+              home pgdn pgup end
+              _ _ _
+              del bspc
+              vold volu
+            )
+          '';
         };
+      };
+    };
   hardware.uinput.enable = true;
 }
