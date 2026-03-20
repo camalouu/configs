@@ -59,6 +59,7 @@
     "bindings": {
       "shift-s": ["vim::PushAddSurrounds", {}],
       "/": "editor::ToggleComments",
+      "n": "editor::SelectNext",
     },
   },
   {

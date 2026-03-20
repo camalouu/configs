@@ -203,6 +203,7 @@ in
     };
     desktopManager.gnome.enable = true;
     # xkb.options = "ctrl:nocaps,compose:ralt";
+    xkb.options = "compose:ralt";
     excludePackages = [ pkgs.xterm ];
   };
 
@@ -369,58 +370,62 @@ in
     };
 
     services.kanata = {
-      enable = true;
-      keyboards = {
-        default = {
-          devices = [
-            "/dev/input/by-path/platform-i8042-serio-0-event-kbd"
-          ];
-          extraDefCfg = ''
-            process-unmapped-keys yes
-            delegate-to-first-layer yes
-          '';
-          config = ''
-            (defsrc
-              caps  a s d f   h j k l scln
-              n m , .
-              lmet lalt spc
-              u i
-              [ ]
-            )
-            (defalias
-              ;; Home Row Mods (Left Hand: Super, Alt, Shift, Ctrl)
-              a_mod    (tap-hold-release 200 150 a lmet)
-              s_mod    (tap-hold-release 200 150 s lalt)
-              d_mod    (tap-hold-release 300 250 d lsft)
-              f_mod    (tap-hold-release 300 250 f lctl)
+          enable = true;
+          keyboards = {
+            default = {
+              devices = [
+                "/dev/input/by-path/platform-i8042-serio-0-event-kbd"
+              ];
+              extraDefCfg = ''
+                process-unmapped-keys yes
+                delegate-to-first-layer yes
+              '';
+              config = ''
+                (defsrc
+                  caps  a s d f   h j k l scln
+                  n m , .
+                  lmet lalt spc
+                  u i
+                  [ ]
+                )
 
-              ;; Home Row Mods (Right Hand: Ctrl, Shift, Alt, Super)
-              j_mod    (tap-hold-release 300 250 j rctl)
-              k_mod    (tap-hold-release 300 250 k rsft)
-              l_mod    (tap-hold-release 200 150 l lalt)
-              scln_mod (tap-hold-release 200 150 scln lmet)
+                (defchords combos 50
+                  (u)   u
+                  (i)   i
+                  (u i) C-bspc
+                )
 
-              ;; Spacebar Mod: Tap for Space, Hold for 'nav' layer
-              spc_mod  (tap-hold-release 200 150 spc (layer-toggle nav))
-            )
-            (deflayer base
-              esc   _ _ @d_mod @f_mod   _ @j_mod @k_mod _ _
-              n m , .
-              lalt lmet @spc_mod
-              u i
-              [ ]
-            )
-            ;; The Navigation Layer (Active only while holding Space)
-            (deflayer nav
-              _     _ _ _ _   left down up rght _
-              home pgdn pgup end
-              _ _ _
-              del bspc
-              vold volu
-            )
-          '';
+                (defalias
+                  left_shift    (tap-hold-release 300 250 d lsft)
+                  left_ctrl    (tap-hold-release 300 250 f lctl)
+
+                  right_ctrl    (tap-hold-release 300 250 m rctl)
+                  right_shift    (tap-hold-release 300 250 , rsft)
+
+                  spc_mod  (tap-hold-release 300 250 spc (layer-toggle nav))
+
+                  u_ch     (chord combos u)
+                  i_ch     (chord combos i)
+                )
+
+                (deflayer base
+                  esc   _ _ @left_shift @left_ctrl   _ _ _ _ _
+                  _ @right_ctrl @right_shift _
+                  lalt lmet @spc_mod
+                  @u_ch @i_ch
+                  [ ]
+                )
+
+                (deflayer nav
+                  _     _ _ _ _   left down up rght _
+                  home pgdn pgup end
+                  _ _ _
+                  _ _
+                  vold volu
+                )
+              '';
+            };
+          };
         };
-      };
-    };
   hardware.uinput.enable = true;
 }

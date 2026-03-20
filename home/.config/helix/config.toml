@@ -1,0 +1,13 @@
+# ~/.config/helix/config.toml
+theme = "onedark"
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.search]
+smart-case = true
+
+[editor.file-picker]
+hidden = false

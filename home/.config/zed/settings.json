@@ -25,6 +25,10 @@
   "bottom_dock_layout": "contained",
   "show_edit_predictions": false,
   "agent": {
+    "inline_assistant_model": {
+      "provider": "copilot_chat",
+      "model": "gpt-5.3-codex"
+    },
     "play_sound_when_agent_done": true,
     "always_allow_tool_actions": true,
     "default_profile": "write",
@@ -86,12 +90,12 @@
     "git_status": true,
   },
   "tab_bar": {
+    "show": false,
     "show_nav_history_buttons": false,
     "show_tab_bar_buttons": true,
   },
   "agent_ui_font_size": 21,
   "close_on_file_delete": true,
-,
   "lsp": {
     "jdtls": {
       "initialization_options": {

@@ -34,7 +34,8 @@ require('packer').startup(function(use)
     tag = '0.1.8',
     requires = { {'nvim-lua/plenary.nvim'} }
   }
-  
+  use 'mg979/vim-visual-multi'
+
   if packer_bootstrap then
     require('packer').sync()
   end 
@@ -88,26 +89,32 @@ keymap('n', 'gu', '/\\v[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{
 keymap('v', 'u', '<Esc>/\\v[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}<CR>:noh<CR>v35l', opts)
 keymap('n', '<leader>jq', ':%!jq .<CR>', opts)
 
--- Telescope keymaps
-local telescope = require('telescope.builtin')
-keymap('n', '<leader>rg', '', {
-  noremap = true,
-  silent = true,
-  callback = function()
-    telescope.live_grep({
-      additional_args = function() return {"--hidden"} end
-    })
-  end
-})
-keymap('n', '<C-f>', '', {
-  noremap = true,
-  silent = true,
-  callback = function()
-    telescope.find_files({
-      hidden = true
-    })
-  end
-})
+-- vim-visual-multi: use gj to select word, then C-n to add next
+vim.g.VM_maps = {
+  ['Find Under'] = 'gj',
+  ['Find Subword Under'] = 'gj',
+}
+
+-- -- Telescope keymaps
+-- local telescope = require('telescope.builtin')
+-- keymap('n', '<leader>rg', '', {
+--   noremap = true,
+--   silent = true,
+--   callback = function()
+--     telescope.live_grep({
+--       additional_args = function() return {"--hidden"} end
+--     })
+--   end
+-- })
+-- keymap('n', '<C-f>', '', {
+--   noremap = true,
+--   silent = true,
+--   callback = function()
+--     telescope.find_files({
+--       hidden = true
+--     })
+--   end
+-- })
 
 -- Clipboard configuration with silent fallback
 local function has_command(cmd)
