@@ -29,19 +29,14 @@ require('packer').startup(function(use)
       require('nvim-autopairs').setup {}
     end
   }
-  use {
-    'nvim-telescope/telescope.nvim',
-    tag = '0.1.8',
-    requires = { {'nvim-lua/plenary.nvim'} }
-  }
   use 'mg979/vim-visual-multi'
 
   if packer_bootstrap then
     require('packer').sync()
   end 
 end)
-
--- Options
+vim.cmd('colorscheme lunaperche')
+-- Option
 vim.g.mapleader = ' '
 vim.opt.timeoutlen = 300
 vim.opt.expandtab = true
@@ -95,27 +90,6 @@ vim.g.VM_maps = {
   ['Find Subword Under'] = 'w',
   ['Select All'] = 'ga',
 }
-
--- -- Telescope keymaps
--- local telescope = require('telescope.builtin')
--- keymap('n', '<leader>rg', '', {
---   noremap = true,
---   silent = true,
---   callback = function()
---     telescope.live_grep({
---       additional_args = function() return {"--hidden"} end
---     })
---   end
--- })
--- keymap('n', '<C-f>', '', {
---   noremap = true,
---   silent = true,
---   callback = function()
---     telescope.find_files({
---       hidden = true
---     })
---   end
--- })
 
 -- Clipboard configuration with silent fallback
 local function has_command(cmd)
