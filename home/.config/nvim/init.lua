@@ -84,12 +84,14 @@ keymap('n', 'gu', '/\\v[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{
 keymap('v', 'u', '<Esc>/\\v[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}<CR>:noh<CR>v35l', opts)
 keymap('n', '<leader>jq', ':%!jq .<CR>', opts)
 
--- vim-visual-multi: use gj to select word, then C-n to add next
+-- vim-visual-multi: use w to select word, then C-n to add next
 vim.g.VM_maps = {
   ['Find Under'] = 'w',
   ['Find Subword Under'] = 'w',
   ['Select All'] = 'ga',
 }
+
+vim.g.VM_silent_exit = 1
 
 -- Clipboard configuration with silent fallback
 local function has_command(cmd)
