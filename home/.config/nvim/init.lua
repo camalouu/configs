@@ -69,7 +69,7 @@ keymap('i', 'jk', '<Esc>', opts)
 keymap('i', '<C-BS>', '<C-w>', { noremap = true })
 keymap('i', '<C-Del>', '<C-O>dw', opts)
 keymap('n', 'vie', 'ggVG', opts)
-keymap('n', 'gj', 'viw', opts)
+-- keymap('n', 'gj', 'viw', opts)
 keymap('n', 'gh', '0', opts)
 keymap('n', 'gl', '$', opts)
 keymap('v', 'gh', '0', opts)
@@ -91,8 +91,9 @@ keymap('n', '<leader>jq', ':%!jq .<CR>', opts)
 
 -- vim-visual-multi: use gj to select word, then C-n to add next
 vim.g.VM_maps = {
-  ['Find Under'] = 'gj',
-  ['Find Subword Under'] = 'gj',
+  ['Find Under'] = 'w',
+  ['Find Subword Under'] = 'w',
+  ['Select All'] = 'ga',
 }
 
 -- -- Telescope keymaps
