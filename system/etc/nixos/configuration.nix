@@ -65,6 +65,10 @@ in
     fzf
     alacritty
     zellij
+    dust
+    duf
+    tldr
+    procs
     lsd
     glow
     bat
@@ -84,8 +88,8 @@ in
     
     # Media
     mpv
-    clapper
-    amberol
+    # clapper #  cant configure subtitles
+    # amberol #  cant configure audio speed
     gaphor
     typst
     thunderbird
@@ -111,7 +115,6 @@ in
     speedcrunch
     
     # Keyboard tools
-    # unstable.kanata
     qmk
     dos2unix
     via
@@ -149,13 +152,11 @@ in
   # SYSTEM
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-
-
   
   networking.hostName = "camalouu";
   networking.networkmanager.enable = true;
   networking.firewall = {
-    allowedTCPPortRanges = [ { from = 1714; to = 1764; } ];
+    allowedTCPPortRanges = [ { from = 1714; to = 1764; } ]; # for kde connect
     allowedUDPPortRanges = [ { from = 1714; to = 1764; } ];
   };
   
@@ -396,21 +397,21 @@ in
                 )
 
                 (defalias
-                  left_shift    (tap-hold-release 300 250 d lsft)
-                  left_ctrl    (tap-hold-release 300 250 f lctl)
+                  left_shift    (tap-hold-release 200 200 d lsft)
+                  left_ctrl    (tap-hold-release 200 200 f lctl)
 
-                  right_ctrl    (tap-hold-release 300 250 m rctl)
-                  right_shift    (tap-hold-release 300 250 , rsft)
+                  right_ctrl    (tap-hold-release 200 200 j rctl)
+                  right_shift    (tap-hold-release 200 200 k rsft)
 
-                  spc_mod  (tap-hold-release 300 250 spc (layer-toggle nav))
+                  spc_mod  (tap-hold-release 200 200 spc (layer-toggle nav))
 
                   u_ch     (chord combos u)
                   i_ch     (chord combos i)
                 )
 
                 (deflayer base
-                  esc   _ _ @left_shift @left_ctrl   _ _ _ _ _
-                  _ @right_ctrl @right_shift _
+                  esc   _ _ @left_shift @left_ctrl   _ @right_ctrl @right_shift _ _
+                  _ _ _ _
                   lalt lmet @spc_mod
                   @u_ch @i_ch
                   [ ]
