@@ -61,5 +61,5 @@ precmd() {
     echo -ne "\e[5 q"
 }
 
-export PATH="$HOME/.npm-global/bin:$PATH"
+export PATH="$HOME/.npm-global/bin:$HOME/.cargo/bin:$PATH"
 

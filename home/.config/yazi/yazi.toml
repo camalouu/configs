@@ -17,7 +17,7 @@ open = [
 # prepend_previewers = [
 #   { name = "*.md", run = "glow" },
 # ]
-# preloaders = []
+preloaders = []
 # previewers = []
 
 [preview]
