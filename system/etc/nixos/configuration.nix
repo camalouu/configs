@@ -32,7 +32,8 @@ in
     git
     lazygit
     lazydocker
-    unstable.github-copilot-cli
+    # unstable.github-copilot-cli
+    # unstable.claude-code
     unstable.zed-editor
     jdk
     maven
@@ -75,6 +76,7 @@ in
     zoxide
     unstable.yazi
     jq
+    jiq
     unzip
     bottom
     xclip
@@ -383,6 +385,7 @@ in
               '';
               config = ''
                 (defsrc
+                  ;;e r
                   caps  a s d f   h j k l scln
                   n m , .
                   lmet lalt spc
@@ -394,22 +397,30 @@ in
                   (u)   u
                   (i)   i
                   (u i) C-bspc
+                  
+                  ;; New e and r chords
+                  ;;(e)   e
+                  ;;(r)   r
+                  ;;(e r) ret
                 )
 
                 (defalias
                   left_shift    (tap-hold-release 200 200 d lsft)
-                  left_ctrl    (tap-hold-release 200 200 f lctl)
+                  left_ctrl     (tap-hold-release 200 200 f lctl)
 
                   right_ctrl    (tap-hold-release 200 200 j rctl)
-                  right_shift    (tap-hold-release 200 200 k rsft)
+                  right_shift   (tap-hold-release 200 200 k rsft)
 
                   spc_mod  (tap-hold-release 200 200 spc (layer-toggle nav))
 
                   u_ch     (chord combos u)
                   i_ch     (chord combos i)
+                  ;;e_ch     (chord combos e)
+                  ;;r_ch     (chord combos r)
                 )
 
                 (deflayer base
+                   ;;@e_ch @r_ch
                   esc   _ _ @left_shift @left_ctrl   _ @right_ctrl @right_shift _ _
                   _ _ _ _
                   lalt lmet @spc_mod
@@ -418,6 +429,7 @@ in
                 )
 
                 (deflayer nav
+                  ;;_ _
                   _     _ _ _ _   left down up rght _
                   home pgdn pgup end
                   _ _ _
