@@ -18,6 +18,7 @@ in
     unstable.yt-dlp
 
     unstable.telegram-desktop
+    unstable.ollama-cuda
     # Network tools
     wget
     curl
@@ -26,6 +27,7 @@ in
     bandwhich
     termshark
     rustscan
+    mqttui
     
     # Development
     gh
@@ -255,6 +257,12 @@ in
 
   services.logind.lidSwitch = "ignore";
 
+  # services.ollama = {
+  #   enable = true;
+  #   acceleration = "cuda";
+  #   loadModels = [ "gemma4:latest" ];
+  # };
+
   # xdg.portal = {
   #   enable = true;
   #
@@ -278,7 +286,7 @@ in
       "widget.use-xdg-desktop-portal.file-picker" = 1;
     };
   };
-  
+
   programs.neovim = {
     enable = true;
     defaultEditor = true;
