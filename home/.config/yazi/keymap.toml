@@ -94,6 +94,7 @@ for file in "$@"; do
     *.sh) /run/current-system/sw/bin/zsh "$file"; echo ""; read -p "Press enter to continue..."; ;;
     *.py) python3 "$file"; echo -e "Press enter to continue..."; read -r;;
     *.js) node "$file"; echo -e "Press enter to continue..."; read -r;;
+    *.typ) typst compile "$file";
   esac
 done
 '''
