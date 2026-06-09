@@ -1,24 +1,28 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 let
-  unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
+  unstable = import inputs.nixos-unstable { 
+    system = pkgs.system;
+    config = { allowUnfree = true; }; 
+  };
 in
 {
   imports = [
       ./hardware-configuration.nix
-      <home-manager/nixos> 
   ];
+  virtualisation.virtualbox.host.enable = true;
 
   # PACKAGES
   environment.systemPackages = with pkgs; [
-    home-manager
+    unstable.antigravity-cli
 
+    bubblewrap
     openssl
 
     aria2
     unstable.yt-dlp
 
     unstable.telegram-desktop
-    unstable.ollama-cuda
+    # unstable.ollama-cuda
     # Network tools
     wget
     curl
@@ -28,6 +32,7 @@ in
     termshark
     rustscan
     mqttui
+    saleae-logic-2
     
     # Development
     gh
@@ -41,6 +46,8 @@ in
     maven
     helix
     redpanda
+    binwalk
+    john
     # python3
     (python3.withPackages (ps: with ps; [ matplotlib pandas ]))
     amp
@@ -80,6 +87,7 @@ in
     jq
     jiq
     unzip
+    zip
     bottom
     xclip
     stow
@@ -89,6 +97,8 @@ in
     
     # Browsers
     chromium
+    kdePackages.falkon
+    brave
     
     # Media
     mpv
@@ -374,11 +384,6 @@ in
     };
 
     nixpkgs.config.allowUnfree = true;
-    home-manager.useGlobalPkgs = true;
-    home-manager.users.viktor = { pkgs, ... }: {
-      home.stateVersion = "25.05";
-      # home.packages = with pkgs; [ spotify ];
-    };
 
     services.kanata = {
           enable = true;
