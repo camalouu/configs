@@ -30,6 +30,25 @@ function gcommit() {
   git commit -m "$msg"
 }
 
+edit-command-in-nvim() {
+  local tmpfile
+  tmpfile=$(mktemp)
+
+  print -r -- "$BUFFER" > "$tmpfile"
+
+  nvim "$tmpfile"
+
+  BUFFER=$(cat "$tmpfile")
+  CURSOR=${#BUFFER}
+
+  rm "$tmpfile"
+  zle reset-prompt
+}
+
+zle -N edit-command-in-nvim
+bindkey -M emacs '^E' edit-command-in-nvim
+bindkey -M viins '^E' edit-command-in-nvim
+
 # Zoxide
 eval "$(zoxide init --cmd=cd zsh)"
 
