@@ -15,7 +15,13 @@ size = 16
 [keyboard]
 bindings = [
   { key = "Slash", mods = "Control", chars = "\u001f" },
+  { key = "Back", mods = "Control", chars = "\u0017" }
 ]
+
+# [[keyboard.bindings]]
+# key = "Back"
+# mods = "Control"
+# chars = "\u0017"
 
 [general]
 import = [
