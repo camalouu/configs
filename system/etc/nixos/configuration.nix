@@ -14,6 +14,7 @@ in
   # PACKAGES
   environment.systemPackages = with pkgs; [
     unstable.antigravity-cli
+    xdotool
 
     bubblewrap
     openssl
@@ -220,6 +221,16 @@ in
     # xkb.options = "ctrl:nocaps,compose:ralt";
     xkb.options = "compose:ralt";
     excludePackages = [ pkgs.xterm ];
+  };
+
+  systemd.user.services.libinput-gestures = {
+    description = "Libinput Gestures Daemon";
+    wantedBy = [ "graphical-session.target" ];
+    partOf = [ "graphical-session.target" ];
+    serviceConfig = {
+      ExecStart = "${pkgs.libinput-gestures}/bin/libinput-gestures";
+      Restart = "on-failure";
+    };
   };
 
   qt = {
@@ -454,4 +465,5 @@ in
           };
         };
   hardware.uinput.enable = true;
+
 }
