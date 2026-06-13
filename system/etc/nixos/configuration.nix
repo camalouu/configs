@@ -97,7 +97,7 @@ in
     sqlite
     
     # Browsers
-    chromium
+    unstable.chromium
     kdePackages.falkon
     brave
     
