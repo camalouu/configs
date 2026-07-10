@@ -210,6 +210,7 @@ in
     nerd-fonts.droid-sans-mono
   ];
   services.vnstat.enable = true;
+  services.openssh.enable = true;
   # DISPLAY SERVER & DESKTOP
   services.xserver = {
     enable = true;
