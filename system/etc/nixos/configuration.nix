@@ -15,6 +15,7 @@ in
   environment.systemPackages = with pkgs; [
     unstable.antigravity-cli
     xdotool
+    infisical
 
     bubblewrap
     openssl
@@ -295,7 +296,10 @@ in
   #
   # };
 
-  services.tailscale.enable = true;
+  services.tailscale = {
+    enable = true;
+    package = unstable.tailscale;
+  };
 
   # HARDWARE
   hardware.keyboard.qmk.enable = true;

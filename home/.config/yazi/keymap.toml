@@ -105,3 +105,14 @@ on   = [ "g", "o" ]
 run  = "plugin lazygit"
 desc = "run lazygit"
 
+[[mgr.prepend_keymap]]
+on   = "p"
+run  = [ "paste", "unyank" ]
+desc = "Paste and clear yank status"
+
+[[mgr.prepend_keymap]]
+on   = "P"
+run  = [ "paste --force", "unyank" ]
+desc = "Paste (overwrite) and clear yank status"
+
+
