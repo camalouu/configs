@@ -82,3 +82,5 @@ precmd() {
 
 export PATH="$HOME/.npm-global/bin:$HOME/.cargo/bin:$PATH"
 
+
+. "$HOME/.local/bin/env"
